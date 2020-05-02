@@ -1,34 +1,47 @@
 Work Breakdown Agreement
 
 Team: A2099
-Members: Piong Zi Yao, Heng Yi Kin, Peir Jing
+Members: Piong Zi Yao, Heng Yi Kin, Chuang Peir Jing
 
 2/5/2020
 Read and understand the documentations and specifications of the base code.
+Allocate tasks to each member.
 
 3/5/2020
-student1
-- Create a class diagram for Zombie attacks and crafting weapons
-student2
-- Create a class diagram for Beating up the Zombies
-student3
-- Create a class diagram for Farmers and food, and rising from the dead
+Chuang Peir Jing 
+- Create a class diagram for Zombie attacks and crafting weapons.
+Piong Zi Yao
+- Create a class diagram for Beating up the Zombies.
+Heng Yi Kin
+- Create a class diagram for Farmers and food, and rising from the dead.
 
 4/5/2020
-student1
-- Review student2's and student3's class diagrams 
-student2
-- Review student1's and student3's class diagrams
-student3
-- Review student1's and student2's class diagrams
+Chuang Peir Jing
+- Review Piong's and Heng's class diagrams.
+Piong Zi Yao
+- Review Chuang's and Heng's class diagrams.
+Heng Yi Kin
+- Review Chuang's and Piong's class diagrams.
+Combine all three class diagrams.
 
 5/5/2020
-student1
-- Create documentations for Zombie attacks and crafting weapons
-student2
-- Create documentations for Beating up the Zombies 
-student3
-- Create documentations for Farmers and food, and rising from the dead
+Complete interactions diagrams together.
 
-6/7/2020
-- Final checking and submit
+6/5/2020
+Chuang Peir Jing
+- Create documentations for Zombie attacks and crafting weapons.
+Piong Zi Yao
+- Create documentations for Beating up the Zombies.
+Heng Yi Kin
+- Create documentations for Farmers and food, and rising from the dead.
+
+7/5/2020
+Chuang Peir Jing
+- Review Piong's and Heng's documentations.
+Piong Zi Yao
+- Review Chuang's and Heng's documentations.
+Heng Yi Kin
+- Review Chuang and Piong's documentations.
+
+8/5/2020
+Final check and submit
