@@ -41,5 +41,4 @@ public class Human extends ZombieActor {
 		// FIXME humans are pretty dumb, maybe they should at least run away from zombies?
 		return behaviour.getAction(this, map);
 	}
-
 }
