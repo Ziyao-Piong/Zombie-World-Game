@@ -9,9 +9,9 @@ Allocate tasks to each member.
 
 3/5/2020
 Chuang Peir Jing 
-- Create a class diagram for Zombie attacks and crafting weapons.
+- Create a class diagram for Zombie attacks.
 Piong Zi Yao
-- Create a class diagram for Beating up the Zombies.
+- Create a class diagram for Beating up the Zombies and crafting weapons.
 Heng Yi Kin
 - Create a class diagram for Farmers and food, and rising from the dead.
 
@@ -29,9 +29,9 @@ Complete interactions diagrams together.
 
 6/5/2020
 Chuang Peir Jing
-- Create documentations for Zombie attacks and crafting weapons.
+- Create documentations for Zombie attacks.
 Piong Zi Yao
-- Create documentations for Beating up the Zombies.
+- Create documentations for Beating up the Zombies and crafting weapons.
 Heng Yi Kin
 - Create documentations for Farmers and food, and rising from the dead.
 
