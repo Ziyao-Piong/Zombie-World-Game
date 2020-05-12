@@ -1,0 +1,18 @@
+Work Breakdown Agreement
+
+Team: A2099
+Members: Piong Zi Yao, Heng Yi Kin, Chuang Peir Jing
+
+Piong Zi Yao responsible for 
+- the design rationale for beating up the zombie and crafting weapons
+- coding of Limb class, Arm class, Leg class, AttackZombieAction class, CrippledBehaviour class, CraftWeaponAction class, ZombieClub class and ZombieMace class
+- modification on AttackAction class and Zombie class
+
+Pier Jing Chuang responsible for
+- the design rationale for Zombie Attacks
+- coding of AttackHumanAction class, PickUpWeaponBehaviour class, Word class, ShoutBehaviour class and ShoutAction class
+- modification on Zombie class and AttackBehaviour class
+
+Heng Yi Kin responsible for
+- the design rationale for Farmers and Food
+- coding of Farmer Class, FarmBehaviour Class, FarmAction class, Food class, FoodItem class, Crop class. Wheat class, EatAction class and HumanCorpse class.
