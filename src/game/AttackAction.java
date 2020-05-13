@@ -56,10 +56,11 @@ public class AttackAction extends Action {
 				drop.execute(target, map);
 			map.removeActor(target);	
 			
-			result += System.lineSeparator() + target + " is killed.";
+			result = System.lineSeparator() + target + " is killed.";
 		}
 
 		return result;
+		
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
+import edu.monash.fit2099.engine.Item;
 
 /**
  * A Zombie.
@@ -21,12 +22,46 @@ public class Zombie extends ZombieActor {
 			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour()
 	};
+	private int arm = 2;
+	private int leg = 2;
+	protected boolean isCrippled = false;
 
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 	}
 	
-
+	public void lostArm(int armLost) {
+		arm -= armLost;
+	}
+	
+	public void lostLeg(int legLost) {
+		leg -= legLost;
+	}
+	
+	public int getArm() {
+		return arm;
+	}
+	
+	public int getLeg() {
+		return leg;
+	}
+	
+	public boolean getIsCrippled() {
+		return isCrippled;
+	}
+	
+	public void negateIsCrippled() {
+		isCrippled = !isCrippled;
+	}
+	
+	public void dropWeapon(GameMap map) {
+		Actions dropActions = new Actions();
+		for (Item item : this.getInventory())
+			dropActions.add(item.getDropAction());
+		for (Action drop : dropActions)		
+			drop.execute(this, map);
+	}
+	
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(10, "punches");
