@@ -1,12 +1,14 @@
 package game;
 
 import edu.monash.fit2099.engine.Action;
+
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 import edu.monash.fit2099.engine.Item;
+import java.util.Random; 
 
 /**
  * A Zombie.
@@ -25,6 +27,7 @@ public class Zombie extends ZombieActor {
 	private int arm = 2;
 	private int leg = 2;
 	protected boolean isCrippled = false;
+	protected Random rand = new Random ();
 
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
@@ -64,7 +67,14 @@ public class Zombie extends ZombieActor {
 	
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
-		return new IntrinsicWeapon(10, "punches");
+		if (rand.nextBoolean()) 
+		{
+			return new IntrinsicWeapon(20, "bite");
+		}
+		else 
+		{
+			return new IntrinsicWeapon(10, "punches");
+		}
 	}
 
 	/**
