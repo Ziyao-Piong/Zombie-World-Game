@@ -20,6 +20,7 @@ import java.util.Random;
  */
 public class Zombie extends ZombieActor {
 	private Behaviour[] behaviours = {
+			new PickUpWeaponBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
 			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour()
@@ -69,7 +70,7 @@ public class Zombie extends ZombieActor {
 	public IntrinsicWeapon getIntrinsicWeapon() {
 		if (rand.nextBoolean()) 
 		{
-			return new IntrinsicWeapon(20, "bite");
+			return new IntrinsicWeapon(20, "bites");
 		}
 		else 
 		{
