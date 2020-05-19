@@ -25,7 +25,7 @@ public class AttackAction extends Action {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param target the Actor to attack
 	 */
 	public AttackAction(Actor target) {
@@ -46,21 +46,25 @@ public class AttackAction extends Action {
 
 		target.hurt(damage);
 		if (!target.isConscious()) {
-			Item corpse = new PortableItem("dead " + target, '%');
-			map.locationOf(target).addItem(corpse);
-			
+			// Previous code.
+//			Item corpse = new PortableItem("dead " + target, '%');
+//			map.locationOf(target).addItem(corpse);
+
+			//This is used to create a zombie when target dies.(Only for Humans though)
+            Item humanCorpse = new HumanCorpse(target.toString());
+		    map.locationOf(target).addItem(humanCorpse);
+
 			Actions dropActions = new Actions();
 			for (Item item : target.getInventory())
 				dropActions.add(item.getDropAction());
-			for (Action drop : dropActions)		
+			for (Action drop : dropActions)
 				drop.execute(target, map);
-			map.removeActor(target);	
-			
+			map.removeActor(target);
+
 			result = System.lineSeparator() + target + " is killed.";
 		}
 
 		return result;
-		
 	}
 
 	@Override
