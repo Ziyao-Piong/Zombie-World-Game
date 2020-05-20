@@ -58,6 +58,29 @@ public class Zombie extends ZombieActor {
 		isCrippled = !isCrippled;
 	}
 	
+	public String zombieIsAttacked() {
+		if (Math.random() < 0.25) {
+			if (Math.random() < 0.5) {
+				if (arm > 0) {
+					this.lostArm(1);
+					return "Arm";
+				} else if (leg > 0) {
+					this.lostLeg(1);
+					return "Leg";
+				}
+			}
+			else {
+				if (leg > 0) {
+					this.lostLeg(1);
+					return "Arm";
+				} else if (arm > 0) {
+					this.lostArm(1);
+					return "Leg";
+				}
+			}
+		} return "Null";
+	}
+
 	public void dropWeapon(GameMap map) {
 		Actions dropActions = new Actions();
 		for (Item item : this.getInventory())

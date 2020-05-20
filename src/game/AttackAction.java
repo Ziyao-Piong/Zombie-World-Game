@@ -7,12 +7,11 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
-import edu.monash.fit2099.engine.Weapon;
 
 /**
  * Special Action for attacking other Actors.
  */
-public class AttackAction extends Action {
+public abstract class AttackAction extends Action {
 
 	/**
 	 * The Actor that is to be attacked
@@ -31,40 +30,27 @@ public class AttackAction extends Action {
 	public AttackAction(Actor target) {
 		this.target = target;
 	}
-
+	
 	@Override
-	public String execute(Actor actor, GameMap map) {
+	public abstract String execute(Actor actor, GameMap map);
 
-		Weapon weapon = actor.getWeapon();
+	
+	public void targetIsDead(Actor actor, GameMap map) {
 
-		if (rand.nextBoolean()) {
-			return actor + " misses " + target + ".";
-		}
-
-		int damage = weapon.damage();
-		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
-
-		target.hurt(damage);
-		if (!target.isConscious()) {
-			// Previous code.
+		// Previous code.
 //			Item corpse = new PortableItem("dead " + target, '%');
 //			map.locationOf(target).addItem(corpse);
 
-			//This is used to create a zombie when target dies.(Only for Humans though)
-            Item humanCorpse = new HumanCorpse(target.toString());
-		    map.locationOf(target).addItem(humanCorpse);
+		//This is used to create a zombie when target dies.(Only for Humans though)
+        Item humanCorpse = new HumanCorpse(target.toString());
+	    map.locationOf(target).addItem(humanCorpse);
 
-			Actions dropActions = new Actions();
-			for (Item item : target.getInventory())
-				dropActions.add(item.getDropAction());
-			for (Action drop : dropActions)
-				drop.execute(target, map);
-			map.removeActor(target);
-
-			result = System.lineSeparator() + target + " is killed.";
-		}
-
-		return result;
+		Actions dropActions = new Actions();
+		for (Item item : target.getInventory())
+			dropActions.add(item.getDropAction());
+		for (Action drop : dropActions)
+			drop.execute(target, map);
+		map.removeActor(target);
 	}
 
 	@Override
