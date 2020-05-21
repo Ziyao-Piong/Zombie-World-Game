@@ -30,20 +30,24 @@ public abstract class AttackAction extends Action {
 	public AttackAction(Actor target) {
 		this.target = target;
 	}
-	
+
 	@Override
 	public abstract String execute(Actor actor, GameMap map);
 
-	
+
 	public void targetIsDead(Actor actor, GameMap map) {
 
 		// Previous code.
-//			Item corpse = new PortableItem("dead " + target, '%');
-//			map.locationOf(target).addItem(corpse);
+		if (target instanceof Zombie){
+			Item corpse = new PortableItem("dead " + target, '%');
+			map.locationOf(target).addItem(corpse);
+		}
+        else {
+			//This is used to create a zombie when target dies.(Only for Humans though)
+			Item humanCorpse = new HumanCorpse(target.toString());
+			map.locationOf(target).addItem(humanCorpse);
+		}
 
-		//This is used to create a zombie when target dies.(Only for Humans though)
-        Item humanCorpse = new HumanCorpse(target.toString());
-	    map.locationOf(target).addItem(humanCorpse);
 
 		Actions dropActions = new Actions();
 		for (Item item : target.getInventory())
