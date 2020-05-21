@@ -18,3 +18,4 @@ Heng Yi Kin responsible for
 - coding of Farmer Class, FarmBehaviour Class, FarmAction class, Food class, FoodItem class, Crop class. Wheat class, EatAction class and HumanCorpse class.
 
 Chuang Peir Jing - I accept this WBA
+Heng Yi Kin - I accept this WBA.
