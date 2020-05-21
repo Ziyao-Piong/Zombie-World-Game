@@ -21,6 +21,7 @@ import java.util.Random;
 public class Zombie extends ZombieActor {
 	private Behaviour[] behaviours = {
 			new PickUpWeaponBehaviour(),
+			new ShoutBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
 			new CrippledBehaviour(),
 			new HuntBehaviour(Human.class, 10),
