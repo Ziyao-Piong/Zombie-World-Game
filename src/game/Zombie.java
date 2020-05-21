@@ -62,7 +62,7 @@ public class Zombie extends ZombieActor {
 	
 	public String zombieIsAttacked() {
 		if (rand.nextDouble() < 0.25) {
-			if (rand.nextDouble() < 0.5) {
+			if (rand.nextDouble() > 0.5) {
 				if (arm > 0) {
 					this.lostArm(1);
 					return "Arm";
@@ -93,11 +93,22 @@ public class Zombie extends ZombieActor {
 	
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
-		if (rand.nextBoolean()) {
+		if (this.arm == 2) {
+			if (rand.nextBoolean()) {
+				return new IntrinsicWeapon(20, "bites");
+			}
+			else {
+				return new IntrinsicWeapon(10, "punches");
+			}
+		} else if (this.arm == 1) {
+			if (Math.random() < 0.25) {
+				return new IntrinsicWeapon(20, "bites");
+			}
+			else {
+				return new IntrinsicWeapon(10, "punches");
+			}
+		} else {
 			return new IntrinsicWeapon(20, "bites");
-		}
-		else {
-			return new IntrinsicWeapon(10, "punches");
 		}
 	}
 
