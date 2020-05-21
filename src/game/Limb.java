@@ -1,6 +1,5 @@
 package game;
 
-import edu.monash.fit2099.engine.Weapon;
 import edu.monash.fit2099.engine.WeaponItem;
 
 public abstract class Limb extends WeaponItem{
@@ -9,6 +8,6 @@ public abstract class Limb extends WeaponItem{
 		super(name, displayChar, 20, "hits");
 	}
 	
-	public abstract Weapon craftWeapon();
+	public abstract WeaponItem craftWeapon();
 
 }
