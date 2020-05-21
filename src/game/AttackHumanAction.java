@@ -21,6 +21,9 @@ public class AttackHumanAction extends AttackAction {
 			if (!(rand.nextDouble()<0.25)) {
 				return actor + "misses "+ target;
 			}	
+			else {
+				actor.heal(5);
+			}
 		}
 		if (rand.nextBoolean()) {
 			return actor + " misses " + target;
