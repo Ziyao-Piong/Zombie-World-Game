@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.Weapon;
 
 public class AttackZombieAction extends AttackAction {
 	
+	private Random rand = new Random();
 	/**
 	 * Constructor.
 	 *
@@ -25,7 +26,7 @@ public class AttackZombieAction extends AttackAction {
 		if (target instanceof Zombie) {
 			Zombie zombieTarget = (Zombie) target;
 			
-			Weapon weapon = zombieTarget.getWeapon();
+			Weapon weapon = actor.getWeapon();
 
 			if (rand.nextBoolean()) {
 				return actor + " misses " + zombieTarget + ".";
@@ -38,11 +39,10 @@ public class AttackZombieAction extends AttackAction {
 			String limb = zombieTarget.zombieIsAttacked();
 			if (limb != null) {
 				List<Exit> exits = map.locationOf(zombieTarget).getExits();
-				Random rand = new Random();
 				Location dropLocation = exits.get(rand.nextInt(exits.size())).getDestination();
 				
 				if (limb == "Arm") {
-					if (zombieTarget.getArm() == 1 && Math.random() < 0.5) {
+					if (zombieTarget.getArm() == 1 && rand.nextDouble() < 0.5) {
 						List<Item> inventory = zombieTarget.getInventory();
 						if (inventory.size() > 0) {
 							inventory.get(0).getDropAction().execute(zombieTarget, map);
@@ -58,7 +58,7 @@ public class AttackZombieAction extends AttackAction {
 			
 			if (!zombieTarget.isConscious()) {
 				targetIsDead(zombieTarget, map);
-				result = System.lineSeparator() + zombieTarget + " is killed.";
+				result += System.lineSeparator() + zombieTarget + " is killed.";
 			}
 			return result;
 		} 

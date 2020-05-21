@@ -17,17 +17,13 @@ public class CrippledBehaviour implements Behaviour {
 		if (leg == 0) {
 			return new DoNothingAction();
 		} 
-		else if (leg == 2) {
-			return null;
-		} 
-		else {
+		else if (leg == 1) {
 			if (!zombie.getIsCrippled()) {
 				zombie.negateIsCrippled();
 				return new DoNothingAction();
-			} else {
-				return null;
 			}
-		}
+		} 
+		return null;
 	}
 
 }

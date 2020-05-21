@@ -22,6 +22,6 @@ public class CraftWeaponAction extends Action {
 	
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + "crafted" + oldWeapon + "into" + oldWeapon.craftWeapon();
+		return actor + " crafted " + oldWeapon + " into " + oldWeapon.craftWeapon();
 	}
 }

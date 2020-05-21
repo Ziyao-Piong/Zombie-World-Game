@@ -36,11 +36,11 @@ public class Zombie extends ZombieActor {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 	}
 	
-	public void lostArm(int armLost) {
+	private void lostArm(int armLost) {
 		arm -= armLost;
 	}
 	
-	public void lostLeg(int legLost) {
+	private void lostLeg(int legLost) {
 		leg -= legLost;
 	}
 	
@@ -61,8 +61,8 @@ public class Zombie extends ZombieActor {
 	}
 	
 	public String zombieIsAttacked() {
-		if (Math.random() < 0.25) {
-			if (Math.random() < 0.5) {
+		if (rand.nextDouble() < 0.25) {
+			if (rand.nextDouble() < 0.5) {
 				if (arm > 0) {
 					this.lostArm(1);
 					return "Arm";
