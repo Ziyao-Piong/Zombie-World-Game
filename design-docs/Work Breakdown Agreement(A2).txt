@@ -10,9 +10,11 @@ Piong Zi Yao responsible for
 
 Pier Jing Chuang responsible for
 - the design rationale for Zombie Attacks
-- coding of AttackHumanAction class, PickUpWeaponBehaviour class, Word class, ShoutBehaviour class and ShoutAction class
+- coding of AttackHumanAction class, PickUpWeaponBehaviour class, ShoutBehaviour class and ShoutAction class
 - modification on Zombie class and AttackBehaviour class
 
 Heng Yi Kin responsible for
 - the design rationale for Farmers and Food
 - coding of Farmer Class, FarmBehaviour Class, FarmAction class, Food class, FoodItem class, Crop class. Wheat class, EatAction class and HumanCorpse class.
+
+Chuang Peir Jing - I accept this WBA

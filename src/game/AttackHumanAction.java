@@ -50,8 +50,8 @@ public class AttackHumanAction extends AttackAction {
 		
 		target.hurt(damage);
 		if (!target.isConscious()) {
-				targetIsDead(target, map);
-				result = System.lineSeparator() + target + " is killed.";
+			targetIsDead(target, map);
+			result += System.lineSeparator() + target + " is killed.";
 			}
 		return result;
 		}		
