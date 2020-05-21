@@ -27,9 +27,12 @@ public class ShoutBehaviour implements Behaviour {
 	
 	private Action shout(Actor actor) {
 		ArrayList<Action> actions = new ArrayList <Action>();
+		words.clear();
 		words.add("Brainnn");
 		for (String word : words) {
-			if ((word.length() < 10) && (random.nextDouble() < 0.1)) {
+			int value = random.nextInt(10);
+			if ((word.length() < 10) && (value == 0)) {
+				System.out.println(value);
 				actions.add(new ShoutAction(words.get(0)));
 				
 			}
