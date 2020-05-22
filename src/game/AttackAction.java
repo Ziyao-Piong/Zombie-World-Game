@@ -37,8 +37,7 @@ public abstract class AttackAction extends Action {
 
 	public void targetIsDead(Actor actor, GameMap map) {
 
-		// Previous code.
-		if (target instanceof Zombie){
+		if (target.hasCapability(ZombieCapability.UNDEAD)){
 			Item corpse = new PortableItem("dead " + target, '%');
 			map.locationOf(target).addItem(corpse);
 		}
@@ -47,7 +46,6 @@ public abstract class AttackAction extends Action {
 			Item humanCorpse = new HumanCorpse(target.toString());
 			map.locationOf(target).addItem(humanCorpse);
 		}
-
 
 		Actions dropActions = new Actions();
 		for (Item item : target.getInventory())

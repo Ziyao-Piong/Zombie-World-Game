@@ -62,25 +62,22 @@ public class Zombie extends ZombieActor {
 	
 	public String zombieIsAttacked() {
 		if (rand.nextDouble() < 0.25) {
-			if (rand.nextDouble() > 0.5) {
-				if (arm > 0) {
+			if (arm > 0 && leg > 0) {
+				if (rand.nextBoolean()) {
 					this.lostArm(1);
 					return "Arm";
-				} else if (leg > 0) {
+				} else {
 					this.lostLeg(1);
 					return "Leg";
 				}
+			} else if (arm > 0) {
+				this.lostArm(1);
+				return "Arm";
+			}else if (leg > 0) {
+				this.lostLeg(1);
+				return "Leg";
 			}
-			else {
-				if (leg > 0) {
-					this.lostLeg(1);
-					return "Arm";
-				} else if (arm > 0) {
-					this.lostArm(1);
-					return "Leg";
-				}
-			}
-		} return "Null";
+		} return null;
 	}
 
 	public void dropWeapon(GameMap map) {

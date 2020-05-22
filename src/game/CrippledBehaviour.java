@@ -7,10 +7,10 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class CrippledBehaviour implements Behaviour {
 	
-	Zombie zombie;
+	private Zombie zombie;
 	
 	public Action getAction(Actor actor, GameMap map) {
-		if (actor instanceof Zombie) {
+		if (actor.hasCapability(ZombieCapability.UNDEAD)) {
 			zombie = (Zombie) actor;
 		}
 		int leg = zombie.getLeg();

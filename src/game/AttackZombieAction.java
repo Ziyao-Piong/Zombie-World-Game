@@ -23,7 +23,7 @@ public class AttackZombieAction extends AttackAction {
 	
 	public String execute(Actor actor, GameMap map) {
 		
-		if (target instanceof Zombie) {
+		if (target.hasCapability(ZombieCapability.UNDEAD)) {
 			Zombie zombieTarget = (Zombie) target;
 			
 			Weapon weapon = actor.getWeapon();
@@ -37,8 +37,9 @@ public class AttackZombieAction extends AttackAction {
 
 			zombieTarget.hurt(damage);
 			String limb = zombieTarget.zombieIsAttacked();
+			
 			if (limb != null) {
-				List<Exit> exits = map.locationOf(zombieTarget).getExits();
+				List<Exit> exits = new ArrayList<Exit>(map.locationOf(zombieTarget).getExits());
 				Location dropLocation = exits.get(rand.nextInt(exits.size())).getDestination();
 				
 				if (limb == "Arm") {

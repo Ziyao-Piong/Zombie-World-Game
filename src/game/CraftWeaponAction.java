@@ -16,12 +16,12 @@ public class CraftWeaponAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		actor.removeItemFromInventory(oldWeapon);
 		actor.addItemToInventory(oldWeapon.craftWeapon());
-		return menuDescription(actor);
+		return actor + " crafted " + oldWeapon + " into " + oldWeapon.craftWeapon();
 	}
 	
 	
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " crafted " + oldWeapon + " into " + oldWeapon.craftWeapon();
+		return "Craft " + oldWeapon + " into " + oldWeapon.craftWeapon();
 	}
 }
