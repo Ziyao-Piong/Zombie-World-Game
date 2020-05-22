@@ -28,8 +28,8 @@ public class Zombie extends ZombieActor {
 	};
 	private int arm = 2;
 	private int leg = 2;
-	protected boolean isCrippled = false;
-	protected Random rand = new Random ();
+	private boolean isCrippled = false;
+	private Random rand = new Random ();
 
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);

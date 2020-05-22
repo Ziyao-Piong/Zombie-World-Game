@@ -39,6 +39,7 @@ public class AttackZombieAction extends AttackAction {
 			String limb = zombieTarget.zombieIsAttacked();
 			
 			if (limb != null) {
+				// The limb can be dropped around the zombie.
 				List<Exit> exits = new ArrayList<Exit>(map.locationOf(zombieTarget).getExits());
 				Location dropLocation = exits.get(rand.nextInt(exits.size())).getDestination();
 				
