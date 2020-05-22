@@ -19,6 +19,9 @@ public class CraftWeaponAction extends Action {
 		this.oldWeapon = oldWeapon;
 	}
 	
+	/**
+	 * Remove the old weapon from the inventory and add the upgraded weapon into the inventory.
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		actor.removeItemFromInventory(oldWeapon);
