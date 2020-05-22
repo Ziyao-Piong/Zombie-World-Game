@@ -32,6 +32,9 @@ public class PickUpWeaponBehaviour implements Behaviour {
 	public Action getAction(Actor actor, GameMap map) {
 		ArrayList<Action> actions = new ArrayList<Action>();
 		
+		if (actor.getInventory().size() >= 1) {
+			return null;
+		}
 		for (Item item: map.locationOf(actor).getItems()){
 			if ((item.getPickUpAction() != null) && (item.asWeapon() != null)) {
 				actions.add(item.getPickUpAction());
