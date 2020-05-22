@@ -11,7 +11,6 @@ import edu.monash.fit2099.engine.Location;
  */
 public class Crop extends Ground {
     private int countdown;
-//    private boolean ripe;
 
     /**
      * Calls super class constructor
@@ -20,7 +19,6 @@ public class Crop extends Ground {
         super('c');
         this.countdown = 20;
 
-//        this.ripe = false;
     }
 
     /**
@@ -38,17 +36,9 @@ public class Crop extends Ground {
      * @param number : decreases the number of turns required for Crop to ripens
      */
     public void decrementCountdown(int number) {
-//        if number<= 0  exception
         this.countdown -= number;
     }
 
-//    public boolean getRipe() {
-//        return ripe;
-//    }
-//
-//    public void setRipe(boolean ripe) {
-//        this.ripe = ripe;
-//    }
 
     /**
      * @param currentLocation The location of the Crop
@@ -69,9 +59,8 @@ public class Crop extends Ground {
      * @param currentLocation The location of the Crop
      */
     public void cropRipens(Location currentLocation) {
-//        setRipe(true);
         this.displayChar = 'C';
-//        currentLocation.setGround(new Dirt());
+
 
     }
 
@@ -87,8 +76,6 @@ public class Crop extends Ground {
         if (location.getGround().getDisplayChar() == 'C') {
             actions.add(new HarvestAction(location));
         }
-//        if (location.map().locationOf(actor).getGround().getDisplayChar() == 'C')
-//            actions.add(new HarvestAction(location));
         return actions;
     }
 }

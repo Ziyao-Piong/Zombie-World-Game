@@ -3,6 +3,8 @@ package game;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
+import java.util.Random;
+
 
 /**
  * Class that represent HumanCorpse
@@ -10,8 +12,7 @@ import edu.monash.fit2099.engine.Location;
  * @author Yi Kin Heng
  */
 public class HumanCorpse extends Item {
-
-    private int countdown = 5;
+    private int countdown ;
     private String deadHumanName;
 
 
@@ -23,6 +24,8 @@ public class HumanCorpse extends Item {
     public HumanCorpse(String deadHumanName) {
         super("humanCorpse", 'X', false);
         this.deadHumanName = deadHumanName;
+        Random random = new Random();
+        countdown = 5+ random.nextInt(6);
     }
 
     /**
@@ -31,11 +34,10 @@ public class HumanCorpse extends Item {
     @Override
     public void tick(Location currentLocation) {
         super.tick(currentLocation);
-        countdown -= 1;
         if (countdown <= 0) {
             spawnZombie(currentLocation);
-
         }
+        countdown -= 1;
     }
 
     /**
