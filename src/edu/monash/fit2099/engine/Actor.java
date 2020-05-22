@@ -149,8 +149,7 @@ public abstract class Actor implements ActorInterface, Capable, Printable {
 	 * By default, the Actor 'punches' for 5 damage. Override this method to create
 	 * an Actor with more interesting descriptions and/or different damage.
 	 *
-	 * @return a freshly-instantiated IntrinsicWeapon
-	 */
+	 * @return a freshly-instantiated IntrinsicWeapon	 */
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(5, "punches");
 	}

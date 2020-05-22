@@ -14,7 +14,7 @@ import edu.monash.fit2099.engine.GameMap;
  *
  */
 public class ShoutBehaviour implements Behaviour {
-	String [] words = {"Brainnn"}; 
+	private String [] words = {"Brainnn"}; 
 	protected Random random = new Random();
 	
 	
