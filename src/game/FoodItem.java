@@ -41,4 +41,13 @@ public abstract class FoodItem extends Item implements Food {
     public String verb() {
         return verb;
     }
+    /**
+     * Returns the food name when consuming this food, so that it can be displayed
+     * in the UI.
+     *
+     * @return a string name of food, e.g. "Wheat",
+     */
+    public String name(){
+        return name;
+    }
 }

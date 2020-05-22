@@ -13,7 +13,7 @@ import edu.monash.fit2099.engine.GameMap;
  *
  */
 public class Human extends ZombieActor {
-	private Behaviour behaviour = new WanderBehaviour();
+	protected Behaviour behaviour = new WanderBehaviour();
 
 	/**
 	 * The default constructor creates default Humans
