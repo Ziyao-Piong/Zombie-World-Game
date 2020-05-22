@@ -31,7 +31,6 @@ public class FarmBehaviour implements Behaviour {
         if (random.nextInt(3) == 0) {
             doSowAction = true;
         }
-        System.out.println("doSowAction is " + doSowAction);
         for (Exit e : exits) {
             if ((doSowAction) && (!(e.getDestination().containsAnActor())) && (e.getDestination().getGround().getDisplayChar() == '.')) {
                 return new SowAction(e);
