@@ -34,7 +34,12 @@ public abstract class AttackAction extends Action {
 	@Override
 	public abstract String execute(Actor actor, GameMap map);
 
-
+	/**
+	 * Remove the actor, drop everything the actor is holding 
+	 * and create a corpse when the actor is dead
+	 * @param actor	the actor that is dead
+	 * @param map	the map the actor is on
+	 */
 	protected void targetIsDead(Actor actor, GameMap map) {
 
 		if (target.hasCapability(ZombieCapability.UNDEAD)){
@@ -51,6 +56,11 @@ public abstract class AttackAction extends Action {
 		map.removeActor(target);
 	}
 	
+	/**
+	 * Drop all the items this actor currently has in its inventory
+	 * @param actor	the actor 
+	 * @param map	the map where the actor is on
+	 */
 	protected void dropWeapon(Actor actor,GameMap map) {
 		Actions dropActions = new Actions();
 		for (Item item : actor.getInventory())
