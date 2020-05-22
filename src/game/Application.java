@@ -55,35 +55,46 @@ public class Application {
 		// Place some random humans
 		// actual codes are here.
 
+		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
+				"Elina", "Jaquelyn"};
+		int x, y;
+		for (String name : humans) {
+			do {
+				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+			}
+			while (gameMap.at(x, y).containsAnActor());
+			gameMap.at(x,  y).addActor(new Human(name));
+		}
+
+		String[] farmers ={"_Clem","_Jacob","_Winter"};
+		for (String name : farmers) {
+			do {
+				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+			}
+			while (gameMap.at(x, y).containsAnActor());
+			gameMap.at(x,  y).addActor(new Farmer(name));
+		}
+
+
+		// Place some random humans and farmers.
 //		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
 //				"Elina", "Winter", "Clem", "Jacob", "Jaquelyn"};
 //		int x, y;
 //		for (String name : humans) {
 //			do {
+//
 //				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
 //				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
 //			}
 //			while (gameMap.at(x, y).containsAnActor());
-//			gameMap.at(x,  y).addActor(new Human(name));
+//			double z = Math.random() * 100;
+//			if (z > 30) {
+//				gameMap.at(x, y).addActor(new Human(name));
+//			} else
+//				gameMap.at(x, y).addActor(new Farmer(name));
 //		}
-
-		// Place some random humans and farmers.
-		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
-				"Elina", "Winter", "Clem", "Jacob", "Jaquelyn"};
-		int x, y;
-		for (String name : humans) {
-			do {
-
-				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
-				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
-			}
-			while (gameMap.at(x, y).containsAnActor());
-			double z = Math.random() * 100;
-			if (z > 30) {
-				gameMap.at(x, y).addActor(new Human(name));
-			} else
-				gameMap.at(x, y).addActor(new Farmer(name));
-		}
 
 
 		// place a simple weapon
