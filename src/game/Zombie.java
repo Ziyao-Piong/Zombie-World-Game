@@ -81,22 +81,12 @@ public class Zombie extends ZombieActor {
 	
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
-		if (this.arm == 2) {
-			if (rand.nextBoolean()) {
-				return new IntrinsicWeapon(20, "bites");
-			}
-			else {
-				return new IntrinsicWeapon(10, "punches");
-			}
-		} else if (this.arm == 1) {
-			if (Math.random() < 0.25) {
-				return new IntrinsicWeapon(20, "bites");
-			}
-			else {
-				return new IntrinsicWeapon(10, "punches");
-			}
-		} else {
+	
+		if (rand.nextDouble() < 0.5 * (arm/2)) {
 			return new IntrinsicWeapon(20, "bites");
+		}
+		else {
+			return new IntrinsicWeapon(10, "punches");
 		}
 	}
 
