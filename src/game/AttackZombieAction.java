@@ -18,7 +18,7 @@ import edu.monash.fit2099.engine.Weapon;
 public class AttackZombieAction extends AttackAction {
 	
 	private Random rand = new Random();
-	
+	private ZombieCapability attackableTeam = ZombieCapability.UNDEAD;
 	/**
 	 * Constructor.
 	 *
@@ -30,12 +30,12 @@ public class AttackZombieAction extends AttackAction {
 	
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		if (target.hasCapability(ZombieCapability.UNDEAD)) {
+		if (target.hasCapability(attackableTeam)) {
 			Zombie zombieTarget = (Zombie) target;
 			
 			Weapon weapon = actor.getWeapon();
 
-			if (rand.nextBoolean()) {
+			if (rand.nextDouble() < 0.6) {
 				return actor + " misses " + zombieTarget + ".";
 			}
 
@@ -46,7 +46,7 @@ public class AttackZombieAction extends AttackAction {
 			String limb = zombieTarget.zombieIsAttacked();
 			
 			if (limb != null) {
-				dropLimbs(limb, zombieTarget, map);
+				dropLimb(limb, zombieTarget, map);
 			}
 			
 			if (!zombieTarget.isConscious()) {
@@ -65,7 +65,7 @@ public class AttackZombieAction extends AttackAction {
 	 * @param zombieTarget	the zombie which is attacked
 	 * @param map			the game map the zombie is on
 	 */
-	private void dropLimbs(String limb, Zombie zombieTarget, GameMap map) {
+	private void dropLimb(String limb, Zombie zombieTarget, GameMap map) {
 		List<Exit> exits = new ArrayList<Exit>(map.locationOf(zombieTarget).getExits());
 		Location dropLocation = exits.get(rand.nextInt(exits.size())).getDestination();
 		
