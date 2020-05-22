@@ -14,8 +14,9 @@ import edu.monash.fit2099.engine.GameMap;
  *
  */
 public class ShoutBehaviour implements Behaviour {
-	private ArrayList<String> words = new ArrayList<String>();
+	private String [] words = {"Brainnn"}; 
 	protected Random random = new Random();
+	
 	
 	/**
 	 * Returns a ShoutAction that shout a word if the length of 
@@ -27,15 +28,13 @@ public class ShoutBehaviour implements Behaviour {
 	
 	private Action shout(Actor actor) {
 		ArrayList<Action> actions = new ArrayList <Action>();
-		words.clear();
-		words.add("Brainnn");
 		for (String word : words) {
 			int value = random.nextInt(10);
 			if ((word.length() < 10) && (value == 0)) {
-				System.out.println(value);
-				actions.add(new ShoutAction(words.get(0)));
-				
+				actions.add(new ShoutAction(words[random.nextInt(words.length)]));
+			
 			}
+			else {continue;}
 		}
 		if (!actions.isEmpty()) {
 			return actions.get(random.nextInt(actions.size()));
@@ -53,5 +52,6 @@ public class ShoutBehaviour implements Behaviour {
 		
 		return shout(actor);
 	}
+	
 
 }

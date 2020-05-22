@@ -34,11 +34,15 @@ public abstract class AttackAction extends Action {
 	@Override
 	public abstract String execute(Actor actor, GameMap map);
 
+	/**
+	 * Remove the actor, drop everything the actor is holding 
+	 * and create a corpse when the actor is dead
+	 * @param actor	the actor that is dead
+	 * @param map	the map the actor is on
+	 */
+	protected void targetIsDead(Actor actor, GameMap map) {
 
-	public void targetIsDead(Actor actor, GameMap map) {
-
-		// Previous code.
-		if (target instanceof Zombie){
+		if (target.hasCapability(ZombieCapability.UNDEAD)){
 			Item corpse = new PortableItem("dead " + target, '%');
 			map.locationOf(target).addItem(corpse);
 		}
@@ -48,13 +52,21 @@ public abstract class AttackAction extends Action {
 			map.locationOf(target).addItem(humanCorpse);
 		}
 
-
-		Actions dropActions = new Actions();
-		for (Item item : target.getInventory())
-			dropActions.add(item.getDropAction());
-		for (Action drop : dropActions)
-			drop.execute(target, map);
+		dropWeapon(target, map);
 		map.removeActor(target);
+	}
+	
+	/**
+	 * Drop all the items this actor currently has in its inventory
+	 * @param actor	the actor 
+	 * @param map	the map where the actor is on
+	 */
+	protected void dropWeapon(Actor actor,GameMap map) {
+		Actions dropActions = new Actions();
+		for (Item item : actor.getInventory())
+			dropActions.add(item.getDropAction());
+		for (Action drop : dropActions)		
+			drop.execute(actor, map);
 	}
 
 	@Override

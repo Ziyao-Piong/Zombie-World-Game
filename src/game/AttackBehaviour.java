@@ -42,17 +42,16 @@ public class AttackBehaviour implements Behaviour {
 		// Is there an attackable Actor next to me?
 		List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
 		Collections.shuffle(exits);
-		if (actor.hasCapability(attackableTeam)) {
-			for (Exit e: exits) {
-				if (!(e.getDestination().containsAnActor()))
-					continue;
-				if (e.getDestination().getActor().hasCapability(attackableTeam) && attackableTeam == ZombieCapability.ALIVE) {
-					return new AttackHumanAction(e.getDestination().getActor());
-				
-				} else if (e.getDestination().getActor().hasCapability(attackableTeam) && attackableTeam == ZombieCapability.UNDEAD) {
-					return new AttackZombieAction(e.getDestination().getActor());
-				}
+		for (Exit e: exits) {
+			if (!(e.getDestination().containsAnActor()))
+				continue;
+			if (e.getDestination().getActor().hasCapability(attackableTeam) && attackableTeam == ZombieCapability.ALIVE) {
+				return new AttackHumanAction(e.getDestination().getActor());
+			
+			} else if (e.getDestination().getActor().hasCapability(attackableTeam) && attackableTeam == ZombieCapability.UNDEAD) {
+				return new AttackZombieAction(e.getDestination().getActor());
 			}
+		
 		} return null;		
 	}
 

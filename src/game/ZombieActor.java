@@ -23,6 +23,8 @@ public abstract class ZombieActor extends Actor {
 		if (otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))
 			if (this.hasCapability(ZombieCapability.UNDEAD)) {
 				list.add(new AttackZombieAction(this));
+			} else if (this.hasCapability(ZombieCapability.ALIVE)){
+				list.add(new AttackHumanAction(this));
 			}
 		return list;
 	}
