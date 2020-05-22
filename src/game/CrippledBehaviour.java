@@ -11,7 +11,7 @@ public class CrippledBehaviour implements Behaviour {
 	
 	public Action getAction(Actor actor, GameMap map) {
 		if (actor.hasCapability(ZombieCapability.UNDEAD)) {
-			zombie = (Zombie) actor;
+			this.zombie = (Zombie) actor;
 		}
 		int leg = zombie.getLeg();
 		if (leg == 0) {
@@ -21,7 +21,8 @@ public class CrippledBehaviour implements Behaviour {
 			if (!zombie.getIsCrippled()) {
 				zombie.negateIsCrippled();
 				return new DoNothingAction();
-			}
+			} 
+			zombie.negateIsCrippled();
 		} 
 		return null;
 	}

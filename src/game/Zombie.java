@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
-import edu.monash.fit2099.engine.Item;
 import java.util.Random; 
 
 /**
@@ -53,11 +52,11 @@ public class Zombie extends ZombieActor {
 	}
 	
 	public boolean getIsCrippled() {
-		return isCrippled;
+		return this.isCrippled;
 	}
 	
 	public void negateIsCrippled() {
-		isCrippled = !isCrippled;
+		this.isCrippled = !isCrippled;
 	}
 	
 	public String zombieIsAttacked() {
@@ -73,19 +72,11 @@ public class Zombie extends ZombieActor {
 			} else if (arm > 0) {
 				this.lostArm(1);
 				return "Arm";
-			}else if (leg > 0) {
+			} else if (leg > 0) {
 				this.lostLeg(1);
 				return "Leg";
 			}
 		} return null;
-	}
-
-	public void dropWeapon(GameMap map) {
-		Actions dropActions = new Actions();
-		for (Item item : this.getInventory())
-			dropActions.add(item.getDropAction());
-		for (Action drop : dropActions)		
-			drop.execute(this, map);
 	}
 	
 	@Override

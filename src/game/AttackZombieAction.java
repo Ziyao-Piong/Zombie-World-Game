@@ -49,7 +49,7 @@ public class AttackZombieAction extends AttackAction {
 							inventory.get(0).getDropAction().execute(zombieTarget, map);
 						}
 					} else if (zombieTarget.getArm() == 0) {
-						zombieTarget.dropWeapon(map);
+						dropWeapon(zombieTarget, map);
 					}
 					dropLocation.addItem(new Arm());
 				} else if (limb == "Leg") {
