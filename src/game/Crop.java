@@ -72,7 +72,7 @@ public class Crop extends Ground {
 //        setRipe(true);
         this.displayChar = 'C';
 //        currentLocation.setGround(new Dirt());
-//        currentLocation.addItem(new RipeCrop(currentLocation));
+
     }
 
     /**

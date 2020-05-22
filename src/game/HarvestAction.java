@@ -11,14 +11,7 @@ import edu.monash.fit2099.engine.Location;
  * @author Yi Kin Heng
  */
 public class HarvestAction extends Action {
-    //    private Crop crop;
     private Location harvestLocation;
-
-
-//    public HarvestAction(Crop crop, Location harvestLocation) {
-//        this.crop = crop;
-//        this.harvestLocation = harvestLocation;
-//    }
 
     /**
      * HarvestAction Constructor initialises the harvestLocation variable.
@@ -29,7 +22,6 @@ public class HarvestAction extends Action {
         this.harvestLocation = harvestLocation;
     }
 
-    //REMEMBER POINT 4 EXIT E CHANGE MAP.LOCATION TO EXIT E.
 
     /**
      * Overrides the super class's execute method which harvests the Crop and dropping a new Wheat item if
