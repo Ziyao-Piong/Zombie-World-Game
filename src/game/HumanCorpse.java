@@ -3,21 +3,31 @@ package game;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
-// HumanCorpse is an item.
+
+/**
+ * Class that represent HumanCorpse
+ *
+ * @author Yi Kin Heng
+ */
 public class HumanCorpse extends Item {
 
-    // countdown is the turns required for the dead Human to spawn into a zombie.
-    // deadHumanName is a String name of the Human that died.
     private int countdown = 5;
     private String deadHumanName;
 
-    // X is used to represent dead Human. It is not portable.
+
+    /**
+     * Calls super class's constructor method which sets the name, displayChar and if the item is portable
+     *
+     * @param deadHumanName: the name of the Human that died.
+     */
     public HumanCorpse(String deadHumanName) {
         super("humanCorpse", 'X', false);
         this.deadHumanName = deadHumanName;
     }
 
-    // Override tick method in Location class to decrease countdown every turn.
+    /**
+     * Overrides the super class's tick method which decreases the countdown by 1 every turn.
+     */
     @Override
     public void tick(Location currentLocation) {
         super.tick(currentLocation);
@@ -28,12 +38,15 @@ public class HumanCorpse extends Item {
         }
     }
 
-    //Spawns a zombie at the currentLocation where the Human died with Zombified in front of their previous name.
+    /**
+     * Method that spawns a zombie by creating a new Zombie instance at currentLocation
+     *
+     * @param currentLocation the location where the Zombie will spawn.
+     */
     public void spawnZombie(Location currentLocation) {
         if (!(currentLocation.containsAnActor())) {
             currentLocation.addActor(new Zombie("Zombified " + deadHumanName));
             currentLocation.removeItem(this);
         }
-
     }
 }

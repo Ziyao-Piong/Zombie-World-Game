@@ -1,6 +1,9 @@
 package game;
 
-import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.Exit;
+import edu.monash.fit2099.engine.GameMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,12 +16,13 @@ import java.util.Random;
  * @author Yi Kin Heng
  */
 public class FarmBehaviour implements Behaviour {
-//    private Location currentLocation;
-//    private Crop cropTarget = new Crop();
     private Random random = new Random();
 
-//    double z = Math.random() * 100;
 
+    /**
+     * Overrides super class's getAction method which return an Action that actor can perform, such as SowAction,
+     * FertiliseAction and HarvestAction or null if actor can't do this.
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
@@ -32,7 +36,6 @@ public class FarmBehaviour implements Behaviour {
             if ((doSowAction) && (!(e.getDestination().containsAnActor())) && (e.getDestination().getGround().getDisplayChar() == '.')) {
                 return new SowAction(e);
             } else if ((e.getDestination().getGround().getDisplayChar() == 'C') && !(e.getDestination().containsAnActor())) {
-//                return new HarvestAction((Crop) e.getDestination().getGround(), e.getDestination());
                 return new HarvestAction(e.getDestination());
             }
         }
@@ -40,7 +43,6 @@ public class FarmBehaviour implements Behaviour {
             return new FertiliseAction((Crop) map.locationOf(actor).getGround());
         }
         if (map.locationOf(actor).getGround().getDisplayChar() == 'C') {
-//            return new HarvestAction((Crop) map.locationOf(actor).getGround(), map.locationOf(actor));
             return new HarvestAction(map.locationOf(actor));
         }
         return null;

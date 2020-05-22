@@ -24,7 +24,7 @@ public abstract class FoodItem extends Item implements Food {
     }
 
     /**
-     * Accessor for health points recovered by this food.
+     * method to return health points recovered by this food.
      *
      * @return the health points recovered
      */
@@ -33,7 +33,7 @@ public abstract class FoodItem extends Item implements Food {
     }
 
     /**
-     * Returns the verb used when consuming this food, so that it can be displayed
+     * Method that returns the verb used when consuming this food, so that it can be displayed
      * in the UI.
      *
      * @return a third-person present tense verb, e.g. "eats", "chews"
@@ -41,13 +41,14 @@ public abstract class FoodItem extends Item implements Food {
     public String verb() {
         return verb;
     }
+
     /**
-     * Returns the food name when consuming this food, so that it can be displayed
+     * Method that returns the food name when consuming this food, so that it can be displayed
      * in the UI.
      *
      * @return a string name of food, e.g. "Wheat",
      */
-    public String name(){
+    public String name() {
         return name;
     }
 }

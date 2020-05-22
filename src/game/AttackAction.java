@@ -36,7 +36,7 @@ public abstract class AttackAction extends Action {
 
 	/**
 	 * Remove the actor, drop everything the actor is holding 
-	 * and create a corpse when the actor is dead
+	 * and creates a corpse when the Zombie is dead and creates a HumanCorpse when Human is dead.
 	 * @param actor	the actor that is dead
 	 * @param map	the map the actor is on
 	 */

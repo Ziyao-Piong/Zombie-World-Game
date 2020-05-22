@@ -13,9 +13,9 @@ public class Farmer extends Human {
             behaviour
     };
 
-
     /**
      * The default constructor creates default Farmers by calling the super constructors from Human Class
+     * with a different displayChar 'F'.
      *
      * @param name the human's display name
      */
@@ -23,6 +23,12 @@ public class Farmer extends Human {
         super(name, 'F', 50);
     }
 
+    /**
+     * Overrides super class's playTurn method which selects and return an action to perform on the
+     * current turn.
+     *
+     * @return the Action to be performed
+     */
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
         for (Behaviour behaviour : behaviours) {
