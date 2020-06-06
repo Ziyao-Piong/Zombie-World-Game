@@ -43,7 +43,7 @@ public class EnterVehicleAction extends Action {
 	
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " successfully unlocks and hops in the helicopter";
+		return actor + " unlocks the helicopter";
 	}
 
 }

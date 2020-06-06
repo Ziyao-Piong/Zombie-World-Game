@@ -3,11 +3,9 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.World;
 
@@ -116,21 +114,29 @@ public class GameSetting {
 	
 	
 	public void setUpVehicles() {
-		compoundVehicleLocation = compound.at(24, 1);
+		compoundVehicleLocation = compound.at(42, 13);
 		townVehicleLocation = town.at(1, 1);
-		compound.at(compoundVehicleLocation.x(), compoundVehicleLocation.y()).setGround(new Helipad(player));
-		town.at(townVehicleLocation.x(), townVehicleLocation.y()).setGround(new Helipad(player));
 		
+		Helipad helipad = new Helipad(player);
+		PortableItem key1 = new PortableItem("key1", 'k');
+		helipad.addKey(key1);
 		Helicopter compoundVehicle = new Helicopter("Helicopter", '^');
-		compoundVehicle.setDestination(townVehicleLocation, "to town");
-		
 		Helicopter townVehicle = new Helicopter("Helicopter", '^');
+		compoundVehicle.setDestination(townVehicleLocation, "to town");
 		townVehicle.setDestination(compoundVehicleLocation, "to compound");
 		
+		compound.at(compoundVehicleLocation.x(), compoundVehicleLocation.y()).setGround(helipad);
+		compound.at(compoundVehicleLocation.x(), compoundVehicleLocation.y()).addItem(compoundVehicle);
+		town.at(townVehicleLocation.x(), townVehicleLocation.y()).setGround(helipad);
+		town.at(townVehicleLocation.x(), townVehicleLocation.y()).addItem(townVehicle);
+		
+//		player.addItemToInventory(key1);	
 	}
+	
 
 	public World setUpGame() {
 		setUpHumanAndZombie();
+		setUpVehicles();
 		return world;
 	}
 

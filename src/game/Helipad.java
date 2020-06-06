@@ -19,7 +19,6 @@ public class Helipad extends Ground {
 		super('*');
 	}
 	
-	
 	public Helipad(Actor player) {
 		super('*');
 		this.player = player;
