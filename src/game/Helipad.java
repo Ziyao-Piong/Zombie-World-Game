@@ -10,17 +10,17 @@ import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
-public class Vehicle extends Ground {
+public class Helipad extends Ground {
 	
 	private Actor player;
 	private List<Item> keys = new ArrayList<>();
 	
-	public Vehicle() {
+	public Helipad() {
 		super('*');
 	}
 	
 	
-	public Vehicle(Actor player) {
+	public Helipad(Actor player) {
 		super('*');
 		this.player = player;
 	}
@@ -49,7 +49,7 @@ public class Vehicle extends Ground {
 	
 	@Override
 	public Actions allowableActions(Actor actor, Location location, String direction) {
-		return new Actions(new OpenCarAction(this, location));
+		return new Actions(new EnterVehicleAction(this, location));
 	}
 
 }

@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.World;
 
 public class GameSetting {
@@ -108,6 +109,12 @@ public class GameSetting {
 		compound.at(1, 10).addActor(new Zombie("Gaaaah"));
 		compound.at(62, 12).addActor(new Zombie("Aaargh"));
 	}
+	
+	
+//	public void setUpVehicles() {
+//		Item compoundVehicle = new Helicopter("Helicopter", '^', false);
+//		Item townVehicle = new Helicopter("Helicopter", '^', false);
+//	}
 
 	public World setUpGame() {
 		setUpHumanAndZombie();
