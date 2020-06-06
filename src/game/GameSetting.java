@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.World;
 
 public class GameSetting {
@@ -16,6 +17,9 @@ public class GameSetting {
 	private GameMap compound;
 	private GameMap town;
 	private FancyGroundFactory groundFactory;
+	private Player player;
+	private Location compoundVehicleLocation;
+	private Location townVehicleLocation;
 	
 	public GameSetting() {
 		this.world = new World(new Display());
@@ -74,7 +78,7 @@ public class GameSetting {
 		this.town = new GameMap(groundFactory, townMap);
 		world.addGameMap(town);
 	
-		Actor player = new Player("Player", '@', 10000);
+		this.player = new Player("Player", '@', 10000);
 		world.addPlayer(player, compound.at(42, 15));
 	}
 
@@ -111,10 +115,19 @@ public class GameSetting {
 	}
 	
 	
-//	public void setUpVehicles() {
-//		Item compoundVehicle = new Helicopter("Helicopter", '^', false);
-//		Item townVehicle = new Helicopter("Helicopter", '^', false);
-//	}
+	public void setUpVehicles() {
+		compoundVehicleLocation = compound.at(24, 1);
+		townVehicleLocation = town.at(1, 1);
+		compound.at(compoundVehicleLocation.x(), compoundVehicleLocation.y()).setGround(new Helipad(player));
+		town.at(townVehicleLocation.x(), townVehicleLocation.y()).setGround(new Helipad(player));
+		
+		Helicopter compoundVehicle = new Helicopter("Helicopter", '^');
+		compoundVehicle.setDestination(townVehicleLocation, "to town");
+		
+		Helicopter townVehicle = new Helicopter("Helicopter", '^');
+		townVehicle.setDestination(compoundVehicleLocation, "to compound");
+		
+	}
 
 	public World setUpGame() {
 		setUpHumanAndZombie();
