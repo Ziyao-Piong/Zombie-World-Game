@@ -77,8 +77,7 @@ public class GameSetting {
 		world.addPlayer(player, compound.at(42, 15));
 	}
 
-	// Place some random humans
-	// actual codes are here.
+	
 	public void setUpHumanAndZombie() {
 		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
 				"Elina", "Jaquelyn"};
