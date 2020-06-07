@@ -24,7 +24,7 @@ public class Crop extends Ground {
     /**
      * Setter for countdown instance variable
      *
-     * @returns : countdown
+     * @return : countdown
      */
     public int getCountdown() {
         return countdown;
@@ -42,7 +42,7 @@ public class Crop extends Ground {
 
     /**
      * @param currentLocation The location of the Crop
-     * @Overrides tick method from Ground class so Crop can also experience the joy of time.
+     * Overrides tick method from Ground class so Crop can also experience the joy of time.
      */
     @Override
     public void tick(Location currentLocation) {
@@ -60,15 +60,13 @@ public class Crop extends Ground {
      */
     public void cropRipens(Location currentLocation) {
         this.displayChar = 'C';
-
-
     }
 
     /**
      * @param actor     The location of the Crop
      * @param location  The location of the Crop
      * @param direction The direction of the Crop
-     * @Overrides allowableActions method from Ground class which returns a new collection of actions
+     * Overrides allowableActions method from Ground class which returns a new collection of actions
      */
     @Override
     public Actions allowableActions(Actor actor, Location location, String direction) {
