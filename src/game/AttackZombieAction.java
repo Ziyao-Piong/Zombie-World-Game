@@ -19,6 +19,7 @@ public class AttackZombieAction extends AttackAction {
 	
 	private Random rand = new Random();
 	private ZombieCapability attackableTeam = ZombieCapability.UNDEAD;
+	
 	/**
 	 * Constructor.
 	 *
@@ -35,7 +36,7 @@ public class AttackZombieAction extends AttackAction {
 			
 			Weapon weapon = actor.getWeapon();
 
-			if (rand.nextDouble() < 0.6) {
+			if (rand.nextDouble() < 0.4) {
 				return actor + " misses " + zombieTarget + ".";
 			}
 
@@ -70,13 +71,20 @@ public class AttackZombieAction extends AttackAction {
 		Location dropLocation = exits.get(rand.nextInt(exits.size())).getDestination();
 		
 		if (limb == "Arm") {
+			List<Item> inventory = zombieTarget.getInventory();
 			if (zombieTarget.getArm() == 1 && rand.nextDouble() < 0.5) {
-				List<Item> inventory = zombieTarget.getInventory();
-				if (inventory.size() > 0) {
-					inventory.get(0).getDropAction().execute(zombieTarget, map);
+				for (Item item: inventory) {
+					if (item instanceof Weapon) {
+						item.getDropAction().execute(zombieTarget, map);
+						break;
+					}
 				}
 			} else if (zombieTarget.getArm() == 0) {
-				dropWeapon(zombieTarget, map);
+				for (Item item: inventory) {
+					if (item instanceof Weapon) {
+						item.getDropAction().execute(zombieTarget, map);
+					}
+				}
 			}
 			dropLocation.addItem(new Arm());
 		} else if (limb == "Leg") {
