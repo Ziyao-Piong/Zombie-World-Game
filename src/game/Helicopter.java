@@ -1,14 +1,13 @@
 package game;
 
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.MoveActorAction;
 
-public class Helicopter extends Item {
+public class Helicopter extends ImmovableItem {
 	
 	
 	public Helicopter() {
-		super("Helicopter", '^', false);
+		super("Helicopter", '^');
 	}
 
 	public void setDestination(Location location, String string) {

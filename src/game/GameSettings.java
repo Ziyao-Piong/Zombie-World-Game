@@ -21,7 +21,9 @@ public class GameSettings {
 	private Location compoundVehicleLocation;
 	private Location townVehicleLocation;
 	private Helipad helipad = new Helipad();
-	private ArrayList<PortableItem> keyList = new ArrayList<>();
+	private List<PortableItem> keyList = new ArrayList<>();
+	private List<Zombie> zombieList = new ArrayList<>();
+	private Random rand = new Random();
 	
 	
 	
@@ -84,7 +86,6 @@ public class GameSettings {
 	
 		this.player = new Player("Player", '@', 10000);
 		world.addPlayer(player, compound.at(42, 15));
-		player.addItemToInventory(new CoinPouch());
 	}
 	
 	public void setUpVehicles() {
@@ -153,7 +154,6 @@ public class GameSettings {
 		compound.at(70, 5).addActor(zombie7);
 		compound.at(5, 6).addActor(zombie8);
 		
-		List<Zombie> zombieList = new ArrayList<>();
 		zombieList.add(zombie1);
 		zombieList.add(zombie2);
 		zombieList.add(zombie3);
@@ -162,23 +162,29 @@ public class GameSettings {
 		zombieList.add(zombie6);
 		zombieList.add(zombie7);
 		zombieList.add(zombie8);
-		
-		Random rand = new Random();
+	}
+	
+	public void setUpMerchant() {
+		CoinPouch pouch = new CoinPouch();
+		player.addItemToInventory(pouch);
 		
 		for (int i = 0; i < zombieList.size(); i++) {
-			zombieList.get(i).addItemToInventory(new CoinPouch(5 + rand.nextInt(4)));
-		}
-		
-		int numberOfKeys = keyList.size();
-		for (int i = 0; i < numberOfKeys; i++) {
-			Zombie zombie = zombieList.get(rand.nextInt(zombieList.size()));
-			zombie.addItemToInventory(keyList.get(i));
-			zombieList.remove(zombie);
+			ImmovableItem coin = new ImmovableItem("coin", '$');
+			coin.addAction(new PickUpCoinAction(coin, pouch, 5 + rand.nextInt(4)));
+			zombieList.get(i).addItemToInventory(coin);
 		}
 	}
 	
+	public void setUpKeys() {
+		ArrayList<Zombie> zombies = new ArrayList<>(zombieList);
+		int numberOfKeys = keyList.size();
+		for (int i = 0; i < numberOfKeys; i++) {
+			Zombie zombie = zombies.get(rand.nextInt(zombies.size()));
+			zombie.addItemToInventory(keyList.get(i));
+			zombies.remove(zombie);
+		}
+	}
 	
-
 	public World setUpGame() {
 		setUpVehicles();
 		setUpCompoundHuman();
