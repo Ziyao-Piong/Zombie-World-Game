@@ -19,6 +19,7 @@ public class AttackZombieAction extends AttackAction {
 	
 	private Random rand = new Random();
 	private ZombieCapability attackableTeam = ZombieCapability.UNDEAD;
+	
 	/**
 	 * Constructor.
 	 *

@@ -90,8 +90,8 @@ public class GameSettings {
 		compoundVehicleLocation = compound.at(2, 23);
 		townVehicleLocation = town.at(1, 1);
 		
-		Helicopter compoundVehicle = new Helicopter("Helicopter", '^');
-		Helicopter townVehicle = new Helicopter("Helicopter", '^');
+		Helicopter compoundVehicle = new Helicopter();
+		Helicopter townVehicle = new Helicopter();
 		compoundVehicle.setDestination(townVehicleLocation, "to town");
 		townVehicle.setDestination(compoundVehicleLocation, "to compound");
 		

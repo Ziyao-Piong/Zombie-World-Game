@@ -7,8 +7,8 @@ import edu.monash.fit2099.engine.MoveActorAction;
 public class Helicopter extends Item {
 	
 	
-	public Helicopter(String name, char displayChar) {
-		super(name, displayChar, false);
+	public Helicopter() {
+		super("Helicopter", '^', false);
 	}
 
 	public void setDestination(Location location, String string) {
