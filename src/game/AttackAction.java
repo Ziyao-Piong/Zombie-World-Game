@@ -57,7 +57,7 @@ public abstract class AttackAction extends Action {
 	 * @param actor	the actor 
 	 * @param map	the map where the actor is on
 	 */
-	private void dropAllItem(Actor actor,GameMap map) {
+	private void dropAllItem(Actor actor, GameMap map) {
 		Actions dropActions = new Actions();
 		for (Item item : actor.getInventory())
 			dropActions.add(item.getDropAction());

@@ -109,7 +109,6 @@ public class GameSettings {
 		helipad.addKey(key1);
 		helipad.addKey(key2);
 	}
-
 	
 	public void setUpCompoundHuman() {
 		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
@@ -132,7 +131,7 @@ public class GameSettings {
 			}
 			while (compound.at(x, y).containsAnActor());
 			compound.at(x,  y).addActor(new Farmer(name));
-		}	
+		}
 	}
 	
 	public void setUpCompoundZombie() {
@@ -168,10 +167,10 @@ public class GameSettings {
 		CoinPouch pouch = new CoinPouch();
 		player.addItemToInventory(pouch);
 		
-		for (int i = 0; i < zombieList.size(); i++) {
+		for (Zombie zombie: zombieList) {
 			ImmovableItem coin = new ImmovableItem("coin", '$');
 			coin.addAction(new PickUpCoinAction(coin, pouch, 5 + rand.nextInt(4)));
-			zombieList.get(i).addItemToInventory(coin);
+			zombie.addItemToInventory(coin);
 		}
 	}
 	
@@ -189,6 +188,8 @@ public class GameSettings {
 		setUpVehicles();
 		setUpCompoundHuman();
 		setUpCompoundZombie();
+		setUpMerchant();
+		setUpKeys();
 		return world;
 	}
 

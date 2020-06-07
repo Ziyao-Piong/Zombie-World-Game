@@ -21,7 +21,7 @@ public class PickUpCoinAction extends Action {
 		if (actor.getInventory().contains(pouch)) {
 			pouch.addCoins(coins);
 			map.locationOf(actor).removeItem(coinsDropped);
-			return actor + " collected " + coins + " coins.";
+			return actor + " collected " + coins + " coins";
 		} else {
 			return actor + " does not have a coin pouch to collect coins!";
 		}
@@ -30,7 +30,7 @@ public class PickUpCoinAction extends Action {
 	
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + "picks up the coins";
+		return actor + " collects " + coins + " coins";
 	}
 
 }
