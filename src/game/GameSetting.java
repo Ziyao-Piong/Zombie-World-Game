@@ -17,7 +17,7 @@ public class GameSetting {
 	private GameMap compound;
 	private GameMap town;
 	private FancyGroundFactory groundFactory;
-	private Helipad helipad;
+	private Helipad helipad = new Helipad();
 	private ArrayList<PortableItem> keyList = new ArrayList<>();
 	private Player player;
 	private Location compoundVehicleLocation;
@@ -82,6 +82,28 @@ public class GameSetting {
 	
 		this.player = new Player("Player", '@', 10000);
 		world.addPlayer(player, compound.at(42, 15));
+	}
+	
+	public void setUpVehicles() {
+		compoundVehicleLocation = compound.at(42, 13);
+		townVehicleLocation = town.at(1, 1);
+		
+		Helicopter compoundVehicle = new Helicopter("Helicopter", '^');
+		Helicopter townVehicle = new Helicopter("Helicopter", '^');
+		compoundVehicle.setDestination(townVehicleLocation, "to town");
+		townVehicle.setDestination(compoundVehicleLocation, "to compound");
+		
+		compoundVehicleLocation.setGround(helipad);
+		compoundVehicleLocation.addItem(compoundVehicle);
+		townVehicleLocation.setGround(helipad);
+		townVehicleLocation.addItem(townVehicle);
+		
+		PortableItem key1 = new PortableItem("key1", 'k');
+		PortableItem key2 = new PortableItem("key2", 'k');
+		keyList.add(key1);
+		keyList.add(key2);
+		helipad.addKey(key1);
+		helipad.addKey(key2);
 	}
 
 	
@@ -149,36 +171,11 @@ public class GameSetting {
 	}
 	
 	
-	public void setUpVehicles() {
-		compoundVehicleLocation = compound.at(42, 13);
-		townVehicleLocation = town.at(1, 1);
-		
-		Helicopter compoundVehicle = new Helicopter("Helicopter", '^');
-		Helicopter townVehicle = new Helicopter("Helicopter", '^');
-		compoundVehicle.setDestination(townVehicleLocation, "to town");
-		townVehicle.setDestination(compoundVehicleLocation, "to compound");
-		
-		compoundVehicleLocation.setGround(helipad);
-		compoundVehicleLocation.addItem(compoundVehicle);
-		townVehicleLocation.setGround(helipad);
-		townVehicleLocation.addItem(townVehicle);
-		
-		PortableItem key1 = new PortableItem("key1", 'k');
-		PortableItem key2 = new PortableItem("key2", 'k');
-		keyList.add(key1);
-		keyList.add(key2);
-		helipad.addKey(key1);
-		helipad.addKey(key2);
-		
-//		player.addItemToInventory(key1);	
-	}
-	
-	
-	
 
 	public World setUpGame() {
-		setUpCompoundHuman();
 		setUpVehicles();
+		setUpCompoundHuman();
+		setUpCompoundZombie();
 		return world;
 	}
 

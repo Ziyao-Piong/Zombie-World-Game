@@ -35,7 +35,7 @@ public class AttackZombieAction extends AttackAction {
 			
 			Weapon weapon = actor.getWeapon();
 
-			if (rand.nextDouble() < 0.6) {
+			if (rand.nextDouble() < 0.2) {
 				return actor + " misses " + zombieTarget + ".";
 			}
 
@@ -76,7 +76,7 @@ public class AttackZombieAction extends AttackAction {
 					inventory.get(0).getDropAction().execute(zombieTarget, map);
 				}
 			} else if (zombieTarget.getArm() == 0) {
-				dropWeapon(zombieTarget, map);
+				dropAllItem(zombieTarget, map);
 			}
 			dropLocation.addItem(new Arm());
 		} else if (limb == "Leg") {
