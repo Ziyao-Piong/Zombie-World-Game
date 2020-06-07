@@ -20,17 +20,16 @@ public class MamboMarie extends ZombieActor {
 	private int countdown = 0;
 	protected Random random = new Random();
 
-	public MamboMarie(String name, char displayChar, int hitPoints, ZombieCapability team) {
+	public MamboMarie(String name) {
 		super(name, 'M', 150, ZombieCapability.UNDEAD);
 		// TODO Auto-generated constructor stub
 	}
 
 	private Behaviour[] behaviours = { new SpawnZombieBehaviour(),
-			new ShoutBehaviour(),
-			new PickUpWeaponBehaviour(),
-			new AttackBehaviour(ZombieCapability.ALIVE),
-			new CrippledBehaviour(),
-			new HuntBehaviour(Human.class, 10),
+			//new ShoutBehaviour(),
+			//new PickUpWeaponBehaviour(),
+			//new AttackBehaviour(ZombieCapability.ALIVE),
+			//new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour() };
 
 

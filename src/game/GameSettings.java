@@ -13,7 +13,8 @@ import edu.monash.fit2099.engine.World;
 
 public class GameSettings {
 	
-	private World world;
+	//private World world;
+	private NewWorld newWorld;
 	private GameMap compound;
 	private GameMap town;
 	private FancyGroundFactory groundFactory;
@@ -28,7 +29,8 @@ public class GameSettings {
 	
 	
 	public GameSettings() {
-		this.world = new World(new Display());
+		//this.world = new World(new Display());
+		this.newWorld = new NewWorld(new Display());
 		groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree());
 	
 		List<String> compoundMap = Arrays.asList(
@@ -59,7 +61,8 @@ public class GameSettings {
 				"................................................................................");
 		
 		this.compound = new GameMap(groundFactory, compoundMap);
-		world.addGameMap(compound);
+		//world.addGameMap(compound);
+		newWorld.addGameMap(compound);
 		
 		List<String> townMap = Arrays.asList(
 				"........................................",
@@ -82,10 +85,12 @@ public class GameSettings {
 				"........................................");
 		
 		this.town = new GameMap(groundFactory, townMap);
-		world.addGameMap(town);
+		//world.addGameMap(town);
+		newWorld.addGameMap(town);
 	
 		this.player = new Player("Player", '@', 10000);
-		world.addPlayer(player, compound.at(42, 15));
+		//world.addPlayer(player, compound.at(42, 15));
+		newWorld.addPlayer(player, compound.at(42, 15));
 	}
 	
 	public void setUpVehicles() {
@@ -184,13 +189,18 @@ public class GameSettings {
 		}
 	}
 	
-	public World setUpGame() {
+	public NewWorld setUpGame() {
 		setUpVehicles();
 		setUpCompoundHuman();
 		setUpCompoundZombie();
 		setUpMerchant();
 		setUpKeys();
-		return world;
+		return newWorld;
 	}
+	
+	/*
+	 * public World setUpGame() { setUpVehicles(); setUpCompoundHuman();
+	 * setUpCompoundZombie(); setUpMerchant(); setUpKeys(); return world; }
+	 */
 
 }

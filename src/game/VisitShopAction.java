@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
 public class VisitShopAction extends Action {
@@ -18,5 +19,11 @@ public class VisitShopAction extends Action {
 	
 	public String menuDescription(Actor actor) {
 		return actor + " visits shop";
+	}
+
+	@Override
+	public String execute(Actor actor, GameMap map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
