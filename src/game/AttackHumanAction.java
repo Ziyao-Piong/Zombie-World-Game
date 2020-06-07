@@ -41,10 +41,11 @@ public class AttackHumanAction extends AttackAction {
 			else {
 				actor.heal(5);
 			}
+		} else {
+			if (rand.nextBoolean()) {
+				return actor + " misses " + target;
+			}
 		}
-		if (rand.nextBoolean()) {
-			return actor + " misses " + target;
-		}		
 		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage. ";
 		

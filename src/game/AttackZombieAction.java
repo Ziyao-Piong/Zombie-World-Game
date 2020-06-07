@@ -35,7 +35,7 @@ public class AttackZombieAction extends AttackAction {
 			
 			Weapon weapon = actor.getWeapon();
 
-			if (rand.nextDouble() < 0.2) {
+			if (rand.nextDouble() < 0.4) {
 				return actor + " misses " + zombieTarget + ".";
 			}
 

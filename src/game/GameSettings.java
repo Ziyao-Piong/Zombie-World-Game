@@ -11,19 +11,21 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.World;
 
-public class GameSetting {
+public class GameSettings {
 	
 	private World world;
 	private GameMap compound;
 	private GameMap town;
 	private FancyGroundFactory groundFactory;
-	private Helipad helipad = new Helipad();
-	private ArrayList<PortableItem> keyList = new ArrayList<>();
 	private Player player;
 	private Location compoundVehicleLocation;
 	private Location townVehicleLocation;
+	private Helipad helipad = new Helipad();
+	private ArrayList<PortableItem> keyList = new ArrayList<>();
 	
-	public GameSetting() {
+	
+	
+	public GameSettings() {
 		this.world = new World(new Display());
 		groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree());
 	
@@ -85,7 +87,7 @@ public class GameSetting {
 	}
 	
 	public void setUpVehicles() {
-		compoundVehicleLocation = compound.at(42, 13);
+		compoundVehicleLocation = compound.at(2, 23);
 		townVehicleLocation = town.at(1, 1);
 		
 		Helicopter compoundVehicle = new Helicopter("Helicopter", '^');
@@ -120,7 +122,7 @@ public class GameSetting {
 			compound.at(x,  y).addActor(new Human(name));
 		}
 	
-		String[] farmers ={"_Clem","_Jacob","_Winter"};
+		String[] farmers ={"_Clem","_Jacob"};
 		for (String name : farmers) {
 			do {
 				x = (int) Math.floor(Math.random() * 20.0 + 30.0);

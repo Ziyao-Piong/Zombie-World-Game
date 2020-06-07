@@ -9,8 +9,8 @@ import edu.monash.fit2099.engine.World;
 public class Application {
 
 	public static void main(String[] args) {
-		GameSetting gameSetting = new GameSetting();
-		World world = gameSetting.setUpGame();
+		GameSettings gameSettings = new GameSettings();
+		World world = gameSettings.setUpGame();
 		world.run();
 	}
 }
