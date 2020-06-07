@@ -84,6 +84,7 @@ public class GameSettings {
 	
 		this.player = new Player("Player", '@', 10000);
 		world.addPlayer(player, compound.at(42, 15));
+		player.addItemToInventory(new CoinPouch());
 	}
 	
 	public void setUpVehicles() {
@@ -163,8 +164,12 @@ public class GameSettings {
 		zombieList.add(zombie8);
 		
 		Random rand = new Random();
-		int numberOfKeys = keyList.size();
 		
+		for (int i = 0; i < zombieList.size(); i++) {
+			zombieList.get(i).addItemToInventory(new CoinPouch(5 + rand.nextInt(4)));
+		}
+		
+		int numberOfKeys = keyList.size();
 		for (int i = 0; i < numberOfKeys; i++) {
 			Zombie zombie = zombieList.get(rand.nextInt(zombieList.size()));
 			zombie.addItemToInventory(keyList.get(i));

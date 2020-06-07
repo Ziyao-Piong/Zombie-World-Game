@@ -5,11 +5,11 @@ public class CoinPouch extends PortableItem{
 	private int coins = 0;
 	
 	public CoinPouch() {
-		super("CoinPouch", 'p');
+		super("CoinPouch", '$');
 	}
 	
 	public CoinPouch(int coins) {
-		super("CoinPouch", 'p');
+		super("CoinPouch", '$');
 		this.coins = coins;
 	}
 	
