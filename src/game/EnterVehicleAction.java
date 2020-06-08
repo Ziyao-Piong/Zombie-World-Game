@@ -19,7 +19,7 @@ public class EnterVehicleAction extends Action {
 		this.location = location;
 	}
 	
-	public boolean hasKey(Actor actor) {
+	private boolean hasKey(Actor actor) {
 		List<Item> keys = parking.getKey();
 		for (Item key: keys) {
 			if (actor.getInventory().contains(key)) {

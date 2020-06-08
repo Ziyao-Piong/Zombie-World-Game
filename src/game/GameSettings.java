@@ -89,7 +89,7 @@ public class GameSettings {
 		newWorld.addPlayer(player, compound.at(42, 15));
 	}
 	
-	public void setUpVehicles() {
+	private void setUpVehicles() {
 		compoundVehicleLocation = compound.at(2, 23);
 		townVehicleLocation = town.at(1, 1);
 		
@@ -111,7 +111,7 @@ public class GameSettings {
 		helipad.addKey(key2);
 	}
 	
-	public void setUpCompoundHuman() {
+	private void setUpCompoundHumans() {
 		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
 				"Elina", "Jaquelyn"};
 		int x, y;
@@ -135,7 +135,7 @@ public class GameSettings {
 		}
 	}
 	
-	public void setUpCompoundZombie() {
+	private void setUpCompoundZombies() {
 		Zombie zombie1 = new Zombie("Groan");
 		Zombie zombie2 = new Zombie("Boo");
 		Zombie zombie3 = new Zombie("Uuuurgh");
@@ -164,7 +164,17 @@ public class GameSettings {
 		zombieList.add(zombie8);
 	}
 	
-	public void setUpMerchant() {
+	private void setUpKeys() {
+		ArrayList<Zombie> zombies = new ArrayList<>(zombieList);
+		int numberOfKeys = keyList.size();
+		for (int i = 0; i < numberOfKeys; i++) {
+			Zombie zombie = zombies.get(rand.nextInt(zombies.size()));
+			zombie.addItemToInventory(keyList.get(i));
+			zombies.remove(zombie);
+		}
+	}
+	
+	private void setUpMerchant() {
 		CoinPouch pouch = new CoinPouch();
 		player.addItemToInventory(pouch);
 		
@@ -179,22 +189,13 @@ public class GameSettings {
 		town.at(38, 1).addItem(shop);
 	}
 	
-	public void setUpKeys() {
-		ArrayList<Zombie> zombies = new ArrayList<>(zombieList);
-		int numberOfKeys = keyList.size();
-		for (int i = 0; i < numberOfKeys; i++) {
-			Zombie zombie = zombies.get(rand.nextInt(zombies.size()));
-			zombie.addItemToInventory(keyList.get(i));
-			zombies.remove(zombie);
-		}
-	}
 	
 	public NewWorld setUpGame() {
 		setUpVehicles();
-		setUpCompoundHuman();
-		setUpCompoundZombie();
-		setUpMerchant();
+		setUpCompoundHumans();
+		setUpCompoundZombies();
 		setUpKeys();
+		setUpMerchant();
 		return newWorld;
 	}
 }
