@@ -164,6 +164,15 @@ public class GameSettings {
 		zombieList.add(zombie8);
 	}
 	
+	private void setUpTownZombies() {
+		town.at(3, 12).addActor(new Zombie("Blurrrr"));
+		town.at(18, 9).addActor(new Zombie("Tehehehe"));
+		town.at(31, 5).addActor(new Zombie("Daggggg"));
+		town.at(14, 13).addActor(new Zombie("Lurgh"));
+		town.at(23, 1).addActor(new Zombie("Raaaa"));
+		town.at(33, 9).addActor(new Zombie("Wohoooooo"));
+	}
+	
 	private void setUpKeys() {
 		ArrayList<Zombie> zombies = new ArrayList<>(zombieList);
 		int numberOfKeys = keyList.size();
@@ -194,6 +203,7 @@ public class GameSettings {
 		setUpVehicles();
 		setUpCompoundHumans();
 		setUpCompoundZombies();
+		setUpTownZombies();
 		setUpKeys();
 		setUpMerchant();
 		return newWorld;
