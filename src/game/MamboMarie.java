@@ -26,10 +26,10 @@ public class MamboMarie extends ZombieActor {
 	}
 
 	private Behaviour[] behaviours = { new SpawnZombieBehaviour(),
-			//new ShoutBehaviour(),
-			//new PickUpWeaponBehaviour(),
-			//new AttackBehaviour(ZombieCapability.ALIVE),
-			//new HuntBehaviour(Human.class, 10),
+			new ShoutBehaviour(),
+			new PickUpWeaponBehaviour(),
+			new AttackBehaviour(ZombieCapability.ALIVE),
+			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour() };
 
 

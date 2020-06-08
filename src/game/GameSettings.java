@@ -11,7 +11,7 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
 public class GameSettings {
-	
+
 	private Display display;
 	private NewWorld newWorld;
 	private GameMap compound;
