@@ -55,14 +55,14 @@ public class NewWorld extends World{
 		}
 
 		// This loop is basically the whole game
+		int counter = 0;
 		while (stillRunning()) {
 			GameMap playersMap = actorLocations.locationOf(player).map();
 			playersMap.draw(display);
 			
 			GameMap gameMapCompound= gameMaps.get(0);
-			
 			if (!gameMapCompound.contains(mamboMarie)) {
-				int percentage = random.nextInt(20);
+				int percentage = random.nextInt(1);
 				if (percentage == 0) {
 					Location firstEdge = new Location(gameMaps.get(0), 0, 0);
 					Location secondEdge = new Location(gameMaps.get(0), gameMaps.get(0).getXRange().max(), 0);
@@ -72,9 +72,26 @@ public class NewWorld extends World{
 					locations.add(secondEdge);
 					locations.add(thirdEdge);
 					locations.add(fourthEdge);
-					//gameMapCompound.addActor(mamboMarie, locations.get(random.nextInt(locations.size())));
+					int value = random.nextInt(20);
+					if (value == 0) {
+						gameMapCompound.at(locations.get(random.nextInt(locations.size())).x(),locations.get(random.nextInt(locations.size())).y()).addActor(mamboMarie);
+						gameMapCompound.draw(display);
+					}
+					
+						//gameMapCompound.at(0, 0).addActor(mamboMarie);
+					/*}
+					if (value == 1) {
+						gameMapCompound.at(0, gameMaps.get(0).getYRange().max()).addActor(mamboMarie);
+					}
+					if (value ==2) {
+						gameMapCompound.at(gameMaps.get(0).getXRange().max(), 0).addActor(mamboMarie);
+					}
+					if (value ==3 ) {
+						gameMapCompound.at(gameMaps.get(0).getXRange().max(), gameMaps.get(0).getXRange().max()).addActor(mamboMarie);;
+					}*/
+					//gameMapCompound.at(locations.get(random.nextInt(locations.size())).x(),locations.get(random.nextInt(locations.size())).y()).addActor(mamboMarie);
 					//lastActionMap.put(mamboMarie, new DoNothingAction());
-					actorLocations.add(mamboMarie, locations.get(random.nextInt(locations.size())));
+					//actorLocations.add(mamboMarie, locations.get(random.nextInt(locations.size())));
 				}
 				
 			}
@@ -83,6 +100,14 @@ public class NewWorld extends World{
 			for (Actor actor : actorLocations) {
 				if (stillRunning())
 					processActorTurn(actor);
+					
+			}
+			if (gameMapCompound.contains(mamboMarie)) {
+				counter +=1;
+			}
+			if (counter == 30) {
+				gameMapCompound.removeActor(mamboMarie);
+				counter = 0;
 			}
 
 			// Tick over all the maps. For the map stuff.
