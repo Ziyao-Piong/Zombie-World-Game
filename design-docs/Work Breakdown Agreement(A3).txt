@@ -19,3 +19,5 @@ Pier Jing Chuang
 1. Mambo Marie
 
 2. Ending the game
+
+3. Bonus feature - Bombs
