@@ -13,6 +13,7 @@ import edu.monash.fit2099.engine.World;
 
 public class GameSettings {
 	
+	private Display display;
 	private World world;
 	private GameMap compound;
 	private GameMap town;
@@ -28,7 +29,8 @@ public class GameSettings {
 	
 	
 	public GameSettings() {
-		this.world = new World(new Display());
+		display = new Display();
+		this.world = new World(display);
 		groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree());
 	
 		List<String> compoundMap = Arrays.asList(
@@ -172,6 +174,10 @@ public class GameSettings {
 			coin.addAction(new PickUpCoinAction(coin, pouch, 5 + rand.nextInt(4)));
 			zombie.addItemToInventory(coin);
 		}
+		ImmovableItem shop = new ImmovableItem("Shop", '&');
+		shop.addAction(new VisitShopAction(pouch, display));
+		compound.at(76, 2).addItem(shop);
+		town.at(38, 1).addItem(shop);
 	}
 	
 	public void setUpKeys() {
