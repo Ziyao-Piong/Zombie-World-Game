@@ -9,11 +9,9 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
-import edu.monash.fit2099.engine.World;
 
 public class GameSettings {
 	
-	//private World world;
 	private NewWorld newWorld;
 	private GameMap compound;
 	private GameMap town;
@@ -29,7 +27,6 @@ public class GameSettings {
 	
 	
 	public GameSettings() {
-		//this.world = new World(new Display());
 		this.newWorld = new NewWorld(new Display());
 		groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree());
 	
@@ -61,7 +58,6 @@ public class GameSettings {
 				"................................................................................");
 		
 		this.compound = new GameMap(groundFactory, compoundMap);
-		//world.addGameMap(compound);
 		newWorld.addGameMap(compound);
 		
 		List<String> townMap = Arrays.asList(
@@ -85,11 +81,9 @@ public class GameSettings {
 				"........................................");
 		
 		this.town = new GameMap(groundFactory, townMap);
-		//world.addGameMap(town);
 		newWorld.addGameMap(town);
 	
 		this.player = new Player("Player", '@', 10000);
-		//world.addPlayer(player, compound.at(42, 15));
 		newWorld.addPlayer(player, compound.at(42, 15));
 	}
 	
@@ -198,9 +192,5 @@ public class GameSettings {
 		return newWorld;
 	}
 	
-	/*
-	 * public World setUpGame() { setUpVehicles(); setUpCompoundHuman();
-	 * setUpCompoundZombie(); setUpMerchant(); setUpKeys(); return world; }
-	 */
 
 }
