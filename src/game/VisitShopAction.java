@@ -78,4 +78,6 @@ public class VisitShopAction extends Action {
 	public String menuDescription(Actor actor) {
 		return actor + " visits shop";
 	}
+
+	
 }
