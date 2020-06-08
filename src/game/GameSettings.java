@@ -11,15 +11,8 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
 public class GameSettings {
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 	private Display display;
->>>>>>> e6eb4d5f19baedb271512d6ebc856bb9b9982b52
-=======
-	private Display display;
->>>>>>> e6eb4d5f19baedb271512d6ebc856bb9b9982b52
 	private NewWorld newWorld;
 	private GameMap compound;
 	private GameMap town;
@@ -35,17 +28,8 @@ public class GameSettings {
 	
 	
 	public GameSettings() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-		this.newWorld = new NewWorld(new Display());
-=======
 		display = new Display();
 		this.newWorld = new NewWorld(display);
->>>>>>> e6eb4d5f19baedb271512d6ebc856bb9b9982b52
-=======
-		display = new Display();
-		this.newWorld = new NewWorld(display);
->>>>>>> e6eb4d5f19baedb271512d6ebc856bb9b9982b52
 		groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree());
 	
 		List<String> compoundMap = Arrays.asList(
@@ -213,12 +197,4 @@ public class GameSettings {
 		setUpKeys();
 		return newWorld;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> e6eb4d5f19baedb271512d6ebc856bb9b9982b52
-=======
->>>>>>> e6eb4d5f19baedb271512d6ebc856bb9b9982b52
 }
