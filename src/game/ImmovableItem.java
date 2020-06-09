@@ -5,19 +5,23 @@ import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.Item;
 
 public class ImmovableItem extends Item {
-	
-	public ImmovableItem(String name, char displayChar) {
+
+	public boolean canDrop;
+
+	public ImmovableItem(String name, char displayChar, boolean canDrop) {
 		super(name, displayChar, false);
+		this.canDrop = canDrop;
 	}
-	
+
 	public void addAction(Action action) {
 		this.allowableActions.add(action);
 	}
-		
+
 	@Override
 	public DropItemAction getDropAction() {
-		return new DropItemAction(this);
-	} 
-	
-
+		if (canDrop) {
+			return new DropItemAction(this);
+		}
+		return null;
+	}
 }
