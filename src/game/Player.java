@@ -10,8 +10,9 @@ import edu.monash.fit2099.engine.Menu;
  * Class representing the Player.
  */
 public class Player extends Human {
-
 	private Menu menu = new Menu();
+	//private SecondMenu menu = new SecondMenu();
+	
 
 	/**
 	 * Constructor.
@@ -29,6 +30,8 @@ public class Player extends Human {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+		actions.add(new TerminateAction());
 		return menu.showMenu(this, actions, display);
 	}
+
 }
