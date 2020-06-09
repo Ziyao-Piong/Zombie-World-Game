@@ -112,8 +112,9 @@ public class GameSettings {
 	}
 	
 	private void setUpCompoundHumans() {
-		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
-				"Elina", "Jaquelyn"};
+		String[] humans = {"Carlton"};
+		//String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
+				//"Elina", "Jaquelyn"};
 		int x, y;
 		for (String name : humans) {
 			do {

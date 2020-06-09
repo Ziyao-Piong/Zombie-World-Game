@@ -15,7 +15,10 @@ public class NewWorld extends World{
 	private MamboMarie mamboMarie = new MamboMarie("Mambo Marie");
 	protected Random random = new Random();
 	private ArrayList<Location> locations = new ArrayList<Location>();
-	
+	private int numberOfHumanleft = 0;
+	private int numberOfZombieleft = 0;
+	private boolean playerLeft = true;
+	private boolean quit = false;
 	public NewWorld(Display display) {
 		super(display);
 		
@@ -50,10 +53,17 @@ public class NewWorld extends World{
 		int counter = 0;
 		boolean pass = true;
 		boolean appearance = false;
-		while (stillRunning()) {
+		while (stillRunning() && quit == false) {
 			GameMap playersMap = actorLocations.locationOf(player).map();
 			playersMap.draw(display);
 			GameMap gameMapCompound= gameMaps.get(0);
+			
+			// Process all the actors.
+			for (Actor actor : actorLocations) {
+				if (stillRunning())
+					processActorTurn(actor);
+					
+			}
 			if (!gameMapCompound.contains(mamboMarie)) {
 				//AttackAction attackAction = new AttackAction(mamboMarie);
 				if (pass) {
@@ -72,12 +82,6 @@ public class NewWorld extends World{
 						counter = 0;
 					}
 				}
-					
-			}
-			// Process all the actors.
-			for (Actor actor : actorLocations) {
-				if (stillRunning())
-					processActorTurn(actor);
 					
 			}
 			if (gameMapCompound.contains(mamboMarie)) {
@@ -105,7 +109,80 @@ public class NewWorld extends World{
 		}
 		display.println(endGameMessage());
 	}
-	
+
+
+	/**
+	 * Returns true if the game is still running.
+	 *
+	 * The game is considered to still be running if the player is still around.
+	 *
+	 * @return true if the player is still on the map.
+	 */
+
+  	@Override 
+  	protected boolean stillRunning() 
+  	{ 
+  		int numberOfHumanLeft = 0;
+  		int numberOfZombieLeft = 0;
+  		if (actorLocations.contains(player)){
+  			playerLeft = true;
+  			
+  		}
+  		else {
+  			playerLeft = false;
+  		}
+  		
+  		for (Actor actor : actorLocations) {
+  			if (actor instanceof Human){
+  				numberOfHumanLeft +=1;
+  				continue;
+  				
+  			}	
+  			else {
+  				numberOfZombieLeft += 1;
+  			}
+  		}
+  		if ((numberOfHumanLeft == 0)&&(numberOfZombieLeft >0)) {
+  			return false;
+  		}
+  		if ((numberOfZombieLeft == 0)&&(numberOfHumanLeft >0)) {
+  			return false;
+  		}
+  		
+  		if (playerLeft) {
+  			return true;
+  		}
+  		else {
+  			return false;
+  		}	
+  
+  	}
+  	/**
+	 * Return a string that can be displayed when the game ends.
+	 *
+	 * @return the string "Game Over"
+	 */
+  	@Override
+	protected String endGameMessage() {
+  		if (quit) {	
+  			return "Quit Game";	
+  		}
+  		else if (numberOfHumanleft>0) {
+  			return "Player wins";
+  		}
+  		else if (numberOfZombieleft>0){
+  			return "Player loses";
+  		}
+  		else {
+  			return "Player loses";
+  		}
+  			
+  	}
+
+  	public void quitGame() {
+  		quit = true;
+  	}
 }
+ 
 
 	
