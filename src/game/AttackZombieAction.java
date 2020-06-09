@@ -28,37 +28,80 @@ public class AttackZombieAction extends AttackAction {
 	public AttackZombieAction(Actor target) {
 		super(target);
 	}
-	
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		if (target.hasCapability(attackableTeam)) {
-			Zombie zombieTarget = (Zombie) target;
-			
-			Weapon weapon = actor.getWeapon();
+			if (target instanceof MamboMarie) {
+				Weapon weapon = actor.getWeapon();
 
-			if (rand.nextDouble() < 0.4) {
-				return actor + " misses " + zombieTarget + ".";
-			}
+				if (rand.nextDouble() < 0.4) {
+					return actor + " misses " + target + ".";
+				}
 
-			int damage = weapon.damage();
-			String result = actor + " " + weapon.verb() + " " + zombieTarget + " for " + damage + " damage.";
+				int damage = weapon.damage();
+				String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 
-			zombieTarget.hurt(damage);
-			String limb = zombieTarget.zombieIsAttacked();
-			
-			if (limb != null) {
-				dropLimb(limb, zombieTarget, map);
+				target.hurt(damage);
+				
+				if (!target.isConscious()) {
+					targetIsDead(target, map);
+					result += System.lineSeparator() + target + " is killed.";
+					
+				}	
+				return result;
 			}
+			else {
+				Zombie zombieTarget = (Zombie) target;
 			
-			if (!zombieTarget.isConscious()) {
-				targetIsDead(zombieTarget, map);
-				result += System.lineSeparator() + zombieTarget + " is killed.";
-			}
-			return result;
-		} 
-		return null;
-	}
+				Weapon weapon = actor.getWeapon();
 	
+				if (rand.nextDouble() < 0.4) {
+					return actor + " misses " + zombieTarget + ".";
+				}
+	
+				int damage = weapon.damage();
+				String result = actor + " " + weapon.verb() + " " + zombieTarget + " for " + damage + " damage.";
+	
+				zombieTarget.hurt(damage);
+				String limb = zombieTarget.zombieIsAttacked();
+				
+				if (limb != null) {
+					dropLimb(limb, zombieTarget, map);
+				}
+				
+				if (!zombieTarget.isConscious()) {
+					targetIsDead(zombieTarget, map);
+					result += System.lineSeparator() + zombieTarget + " is killed.";
+				}
+				return result;
+			}
+		}
+		return null;
+		}
+	
+	
+	/*
+	 * @Override public String execute(Actor actor, GameMap map) { if
+	 * (target.hasCapability(attackableTeam)) { Zombie zombieTarget = (Zombie)
+	 * target;
+	 * 
+	 * Weapon weapon = actor.getWeapon();
+	 * 
+	 * if (rand.nextDouble() < 0.4) { return actor + " misses " + zombieTarget +
+	 * "."; }
+	 * 
+	 * int damage = weapon.damage(); String result = actor + " " + weapon.verb() +
+	 * " " + zombieTarget + " for " + damage + " damage.";
+	 * 
+	 * zombieTarget.hurt(damage); String limb = zombieTarget.zombieIsAttacked();
+	 * 
+	 * if (limb != null) { dropLimb(limb, zombieTarget, map); }
+	 * 
+	 * if (!zombieTarget.isConscious()) { targetIsDead(zombieTarget, map); result +=
+	 * System.lineSeparator() + zombieTarget + " is killed."; } return result; }
+	 * return null; }
+	 * 
+	 */
 	/**
 	 * Drop the limbs at the location adjacent to the zombie with a probability
 	 * to drop the weapon it's holding if the limb is an arm.
