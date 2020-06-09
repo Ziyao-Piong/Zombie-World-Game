@@ -7,7 +7,7 @@ public class Helicopter extends ImmovableItem {
 	
 	
 	public Helicopter() {
-		super("Helicopter", '^');
+		super("Helicopter", '^', false);
 	}
 
 	public void setDestination(Location location, String string) {

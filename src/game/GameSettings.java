@@ -189,11 +189,11 @@ public class GameSettings {
 		player.addItemToInventory(pouch);
 		
 		for (Zombie zombie: zombieList) {
-			ImmovableItem coin = new ImmovableItem("coin", '$');
+			ImmovableItem coin = new ImmovableItem("coin", '$', true);
 			coin.addAction(new PickUpCoinAction(coin, pouch, 5 + rand.nextInt(4)));
 			zombie.addItemToInventory(coin);
 		}
-		ImmovableItem shop = new ImmovableItem("Shop", '&');
+		ImmovableItem shop = new ImmovableItem("Shop", '&', false);
 		shop.addAction(new VisitShopAction(pouch, display));
 		compound.at(76, 2).addItem(shop);
 		town.at(38, 1).addItem(shop);
