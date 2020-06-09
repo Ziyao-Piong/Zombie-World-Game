@@ -72,7 +72,6 @@ public class VisitShopAction extends Action {
 			result += actor + " bought " + itemSelected + " with " + itemPrice + " coins.";
 			return result;
 		} 
-		
 	}
 	
 	public String menuDescription(Actor actor) {

@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class SpawnZombieBehaviour implements Behaviour {
 
-	private int countdown = 10;
+	private int countdown = 9;
 	
 	public void tick(GameMap map) {
         if (countdown > 0) {
@@ -24,7 +24,7 @@ public class SpawnZombieBehaviour implements Behaviour {
 		//ArrayList<Action> actions = new ArrayList<Action>();
 		
 		if (countdown == 0) {
-			countdown = 10;
+			countdown = 9;
 			return new SpawnZombieAction();
 		}
 		

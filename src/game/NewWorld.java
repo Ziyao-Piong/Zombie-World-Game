@@ -13,19 +13,11 @@ import edu.monash.fit2099.engine.World;
 public class NewWorld extends World{
 	
 	private MamboMarie mamboMarie = new MamboMarie("Mambo Marie");
-	private Random random = new Random();
+	protected Random random = new Random();
 	private ArrayList<Location> locations = new ArrayList<Location>();
-	//private Location firstEdge = new Location(gameMaps.get(0), 0, 0);
-	//private Location secondEdge = new Location(gameMaps.get(0), gameMaps.get(0).getXRange().max(), 0);
-	//private Location thirdEdge = new Location(gameMaps.get(0), 0, gameMaps.get(0).getYRange().max());
-	//private Location fourthEdge = new Location(gameMaps.get(0), gameMaps.get(0).getXRange().max(), gameMaps.get(0).getYRange().max());
-
+	
 	public NewWorld(Display display) {
 		super(display);
-		//locations.add(firstEdge);
-		//locations.add(secondEdge);
-		//locations.add(thirdEdge);
-		//locations.add(fourthEdge);
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -55,34 +47,51 @@ public class NewWorld extends World{
 		}
 
 		// This loop is basically the whole game
+		int counter = 0;
+		boolean pass = true;
+		boolean appearance = false;
 		while (stillRunning()) {
 			GameMap playersMap = actorLocations.locationOf(player).map();
 			playersMap.draw(display);
-			
 			GameMap gameMapCompound= gameMaps.get(0);
-			
 			if (!gameMapCompound.contains(mamboMarie)) {
-				int percentage = random.nextInt(20);
-				if (percentage == 0) {
-					Location firstEdge = new Location(gameMaps.get(0), 0, 0);
-					Location secondEdge = new Location(gameMaps.get(0), gameMaps.get(0).getXRange().max(), 0);
-					Location thirdEdge = new Location(gameMaps.get(0), 0, gameMaps.get(0).getYRange().max());
-					Location fourthEdge = new Location(gameMaps.get(0), gameMaps.get(0).getXRange().max(), gameMaps.get(0).getYRange().max());
+				//AttackAction attackAction = new AttackAction(mamboMarie);
+				if (pass) {
+					Location firstEdge = new Location(gameMapCompound, 0, 0);
+					Location secondEdge = new Location(gameMapCompound, gameMapCompound.getXRange().max(), 0);
+					Location thirdEdge = new Location(gameMapCompound, 0, gameMapCompound.getYRange().max());
+					Location fourthEdge = new Location(gameMapCompound, gameMapCompound.getXRange().max(), gameMapCompound.getYRange().max());
 					locations.add(firstEdge);
 					locations.add(secondEdge);
 					locations.add(thirdEdge);
 					locations.add(fourthEdge);
-					//gameMapCompound.addActor(mamboMarie, locations.get(random.nextInt(locations.size())));
-					//lastActionMap.put(mamboMarie, new DoNothingAction());
-					actorLocations.add(mamboMarie, locations.get(random.nextInt(locations.size())));
+					int value = random.nextInt(20);
+					if (value == 0) {
+						gameMapCompound.at(locations.get(random.nextInt(locations.size())).x(),locations.get(random.nextInt(locations.size())).y()).addActor(mamboMarie);
+						appearance = true;
+						counter = 0;
+					}
 				}
-				
+					
 			}
-
 			// Process all the actors.
 			for (Actor actor : actorLocations) {
 				if (stillRunning())
 					processActorTurn(actor);
+					
+			}
+			if (gameMapCompound.contains(mamboMarie)) {
+				counter +=1;
+				
+			}
+			if (counter == 30) {
+				gameMapCompound.removeActor(mamboMarie);
+				
+			}
+			if(appearance) {
+				if ((counter < 30) &&(!gameMapCompound.contains(mamboMarie))) {
+					pass = false;
+					}
 			}
 
 			// Tick over all the maps. For the map stuff.
@@ -98,4 +107,5 @@ public class NewWorld extends World{
 	}
 	
 }
+
 	
