@@ -30,7 +30,6 @@ public class Player extends Human {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-		actions.add(new TerminateAction());
 		return menu.showMenu(this, actions, display);
 	}
 

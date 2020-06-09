@@ -15,8 +15,8 @@ public class NewWorld extends World{
 	private MamboMarie mamboMarie = new MamboMarie("Mambo Marie");
 	protected Random random = new Random();
 	private ArrayList<Location> locations = new ArrayList<Location>();
-	private int numberOfHumanleft = 0;
-	private int numberOfZombieleft = 0;
+	private int numberOfHumanLeft = 0;
+	private int numberOfZombieLeft = 0;
 	private boolean playerLeft = true;
 	private boolean quit = false;
 	public NewWorld(Display display) {
@@ -51,9 +51,9 @@ public class NewWorld extends World{
 
 		// This loop is basically the whole game
 		int counter = 0;
-		boolean pass = true;
+		boolean mamboMarieAppear = true;
 		boolean appearance = false;
-		while (stillRunning() && quit == false) {
+		while (stillRunning()) {
 			GameMap playersMap = actorLocations.locationOf(player).map();
 			playersMap.draw(display);
 			GameMap gameMapCompound= gameMaps.get(0);
@@ -66,7 +66,7 @@ public class NewWorld extends World{
 			}
 			if (!gameMapCompound.contains(mamboMarie)) {
 				//AttackAction attackAction = new AttackAction(mamboMarie);
-				if (pass) {
+				if (mamboMarieAppear) {
 					Location firstEdge = new Location(gameMapCompound, 0, 0);
 					Location secondEdge = new Location(gameMapCompound, gameMapCompound.getXRange().max(), 0);
 					Location thirdEdge = new Location(gameMapCompound, 0, gameMapCompound.getYRange().max());
@@ -94,9 +94,11 @@ public class NewWorld extends World{
 			}
 			if(appearance) {
 				if ((counter < 30) &&(!gameMapCompound.contains(mamboMarie))) {
-					pass = false;
+					mamboMarieAppear = false;
 					}
 			}
+			numberOfHumanLeft = 0;
+			numberOfZombieLeft = 0;
 
 			// Tick over all the maps. For the map stuff.
 			for (GameMap gameMap : gameMaps) {
@@ -122,39 +124,19 @@ public class NewWorld extends World{
   	@Override 
   	protected boolean stillRunning() 
   	{ 
-  		int numberOfHumanLeft = 0;
-  		int numberOfZombieLeft = 0;
+  		if (quit) {
+  			return false;
+  		}
+  		
   		if (actorLocations.contains(player)){
-  			playerLeft = true;
-  			
-  		}
-  		else {
-  			playerLeft = false;
-  		}
-  		
-  		for (Actor actor : actorLocations) {
-  			if (actor instanceof Human){
-  				numberOfHumanLeft +=1;
-  				continue;
-  				
-  			}	
-  			else {
-  				numberOfZombieLeft += 1;
-  			}
-  		}
-  		if ((numberOfHumanLeft == 0)&&(numberOfZombieLeft >0)) {
-  			return false;
-  		}
-  		if ((numberOfZombieLeft == 0)&&(numberOfHumanLeft >0)) {
-  			return false;
-  		}
-  		
-  		if (playerLeft) {
   			return true;
   		}
   		else {
   			return false;
-  		}	
+  		}
+  		
+  
+  		
   
   	}
   	/**
@@ -164,13 +146,13 @@ public class NewWorld extends World{
 	 */
   	@Override
 	protected String endGameMessage() {
-  		if (quit) {	
-  			return "Quit Game";	
+  		if (quit) {
+  			return "Quit Game";
   		}
-  		else if (numberOfHumanleft>0) {
+  		else if (numberOfHumanLeft>0) {
   			return "Player wins";
   		}
-  		else if (numberOfZombieleft>0){
+  		else if (numberOfZombieLeft>0){
   			return "Player loses";
   		}
   		else {
@@ -178,10 +160,15 @@ public class NewWorld extends World{
   		}
   			
   	}
-
+  	
   	public void quitGame() {
   		quit = true;
   	}
+  	
+  	public boolean stillRunning2() {
+  		return actorLocations.contains(player);
+  	}
+
 }
  
 

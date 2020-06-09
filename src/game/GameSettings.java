@@ -87,6 +87,9 @@ public class GameSettings {
 	
 		this.player = new Player("Player", '@', 10000);
 		newWorld.addPlayer(player, compound.at(42, 15));
+		ImmovableItem quitButton = new ImmovableItem("Quit Button",'q',false);
+		quitButton.addAction(new TerminateAction(newWorld));
+		player.addItemToInventory(quitButton);
 	}
 	
 	private void setUpVehicles() {
@@ -125,15 +128,15 @@ public class GameSettings {
 			compound.at(x,  y).addActor(new Human(name));
 		}
 	
-		String[] farmers ={"_Clem","_Jacob"};
-		for (String name : farmers) {
-			do {
-				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
-				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
-			}
-			while (compound.at(x, y).containsAnActor());
-			compound.at(x,  y).addActor(new Farmer(name));
-		}
+//		String[] farmers ={"_Clem","_Jacob"};
+//		for (String name : farmers) {
+//			do {
+//				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+//				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+//			}
+//			while (compound.at(x, y).containsAnActor());
+//			compound.at(x,  y).addActor(new Farmer(name));
+//		}
 	}
 	
 	private void setUpCompoundZombies() {
