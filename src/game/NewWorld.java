@@ -83,7 +83,7 @@ public class NewWorld extends World{
 					locations.add(secondEdge);
 					locations.add(thirdEdge);
 					locations.add(fourthEdge);
-					int value = random.nextInt(10000);
+					int value = random.nextInt(20);
 					if (value == 0) {
 						gameMapCompound.at(locations.get(random.nextInt(locations.size())).x(),locations.get(random.nextInt(locations.size())).y()).addActor(mamboMarie);
 						appearance = true;
@@ -105,8 +105,8 @@ public class NewWorld extends World{
 					mamboMarieAppear = false;
 					}
 			}
-			numberOfHumanLeft = 0;
-			numberOfZombieLeft = 0;
+//			numberOfHumanLeft = 0;
+//			numberOfZombieLeft = 0;
 
 			// Tick over all the maps. For the map stuff.
 			for (GameMap gameMap : gameMaps) {
@@ -153,11 +153,11 @@ public class NewWorld extends World{
   				}
   			}
   			if (actor instanceof Player) {
-  				if (gameMaps.get(0).contains(actor)) {
+  				if (gameMaps.get(0).contains(actor) || gameMaps.get(1).contains(actor)) {
   					playerLeft = true;
   				}
   				
-  				else {
+  				else {	
   					playerLeft = false;
   				}
   			}
@@ -197,9 +197,6 @@ public class NewWorld extends World{
   		quit = true;
   	}
   	
-  	public boolean stillRunning2() {
-  		return actorLocations.contains(player);
-  	}
 
 }
  
