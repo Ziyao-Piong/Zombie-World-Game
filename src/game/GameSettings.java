@@ -22,16 +22,17 @@ public class GameSettings {
 	private Location townVehicleLocation;
 	private Helipad helipad = new Helipad();
 	private List<PortableItem> keyList = new ArrayList<>();
-	private List<Zombie> zombieList = new ArrayList<>();
+	protected List<Zombie> zombieList = new ArrayList<>();
+	protected List<Human> humanList = new ArrayList<>();
 	private Random rand = new Random();
-
-
-
+	
+	
+	
 	public GameSettings() {
 		display = new Display();
 		this.newWorld = new NewWorld(display);
 		groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree());
-
+	
 		List<String> compoundMap = Arrays.asList(
 				"................................................................................",
 				"................................................................................",
@@ -58,10 +59,10 @@ public class GameSettings {
 				".........................................................................++++...",
 				"..........................................................................++....",
 				"................................................................................");
-
+		
 		this.compound = new GameMap(groundFactory, compoundMap);
 		newWorld.addGameMap(compound);
-
+		
 		List<String> townMap = Arrays.asList(
 				"........................................",
 				"........................................",
@@ -81,31 +82,31 @@ public class GameSettings {
 				"........................................",
 				"........................................",
 				"........................................");
-
+		
 		this.town = new GameMap(groundFactory, townMap);
 		newWorld.addGameMap(town);
-
+	
 		this.player = new Player("Player", '@', 10000);
 		newWorld.addPlayer(player, compound.at(42, 15));
 		ImmovableItem quitButton = new ImmovableItem("Quit Button",'q',false);
 		quitButton.addAction(new TerminateAction(newWorld));
 		player.addItemToInventory(quitButton);
 	}
-
+	
 	private void setUpVehicles() {
 		compoundVehicleLocation = compound.at(2, 23);
 		townVehicleLocation = town.at(1, 1);
-
+		
 		Helicopter compoundVehicle = new Helicopter();
 		Helicopter townVehicle = new Helicopter();
 		compoundVehicle.setDestination(townVehicleLocation, "to town");
 		townVehicle.setDestination(compoundVehicleLocation, "to compound");
-
+		
 		compoundVehicleLocation.setGround(helipad);
 		compoundVehicleLocation.addItem(compoundVehicle);
 		townVehicleLocation.setGround(helipad);
 		townVehicleLocation.addItem(townVehicle);
-
+		
 		PortableItem key1 = new PortableItem("key1", 'k');
 		PortableItem key2 = new PortableItem("key2", 'k');
 		keyList.add(key1);
@@ -113,10 +114,11 @@ public class GameSettings {
 		helipad.addKey(key1);
 		helipad.addKey(key2);
 	}
-
+	
 	private void setUpCompoundHumans() {
-		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
-				"Elina", "Jaquelyn"};
+		String[] humans = {"Carlton"};
+//		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
+//				"Elina", "Jaquelyn"};
 		int x, y;
 		for (String name : humans) {
 			do {
@@ -125,20 +127,20 @@ public class GameSettings {
 			}
 			while (compound.at(x, y).containsAnActor());
 			compound.at(x,  y).addActor(new Human(name));
+			humanList.add(new Human(name));
 		}
-
-
-		String[] farmers ={"_Clem","_Jacob"};
-		for (String name : farmers) {
-			do {
-				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
-				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
-			}
-			while (compound.at(x, y).containsAnActor());
-			compound.at(x,  y).addActor(new Farmer(name));
-		}
+		
+//		String[] farmers ={"_Clem","_Jacob"};
+//		for (String name : farmers) {
+//			do {
+//				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+//				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+//			}
+//			while (compound.at(x, y).containsAnActor());
+//			compound.at(x,  y).addActor(new Farmer(name));
+//		}
 	}
-
+	
 	private void setUpCompoundZombies() {
 		Zombie zombie1 = new Zombie("Groan");
 		Zombie zombie2 = new Zombie("Boo");
@@ -148,7 +150,8 @@ public class GameSettings {
 		Zombie zombie6 = new Zombie("Aaargh");
 		Zombie zombie7 = new Zombie("Baaahhh");
 		Zombie zombie8 = new Zombie("Yeeeeet");
-
+		Zombie zombie9 = new Zombie("ffffff");
+		
 		compound.at(30, 20).addActor(zombie1);
 		compound.at(30,  18).addActor(zombie2);
 		compound.at(10,  4).addActor(zombie3);
@@ -157,7 +160,8 @@ public class GameSettings {
 		compound.at(62, 12).addActor(zombie6);
 		compound.at(70, 5).addActor(zombie7);
 		compound.at(5, 6).addActor(zombie8);
-
+		compound.at(35, 8).addActor(zombie9);
+		
 		zombieList.add(zombie1);
 		zombieList.add(zombie2);
 		zombieList.add(zombie3);
@@ -166,8 +170,9 @@ public class GameSettings {
 		zombieList.add(zombie6);
 		zombieList.add(zombie7);
 		zombieList.add(zombie8);
+		zombieList.add(zombie9);
 	}
-
+	
 	private void setUpTownZombies() {
 		town.at(3, 12).addActor(new Zombie("Blurrrr"));
 		town.at(18, 9).addActor(new Zombie("Tehehehe"));
@@ -176,7 +181,7 @@ public class GameSettings {
 		town.at(23, 1).addActor(new Zombie("Raaaa"));
 		town.at(33, 9).addActor(new Zombie("Wohoooooo"));
 	}
-
+	
 	private void setUpKeys() {
 		ArrayList<Zombie> zombies = new ArrayList<>(zombieList);
 		int numberOfKeys = keyList.size();
@@ -186,11 +191,11 @@ public class GameSettings {
 			zombies.remove(zombie);
 		}
 	}
-
+	
 	private void setUpMerchant() {
 		CoinPouch pouch = new CoinPouch();
 		player.addItemToInventory(pouch);
-
+		
 		for (Zombie zombie: zombieList) {
 			ImmovableItem coin = new ImmovableItem("coin", '$', true);
 			coin.addAction(new PickUpCoinAction(coin, pouch, 5 + rand.nextInt(4)));
@@ -201,7 +206,7 @@ public class GameSettings {
 		compound.at(76, 2).addItem(shop);
 		town.at(38, 1).addItem(shop);
 	}
-
+	
 	private void setUpWeapons() {
 		AmmunitionBag bag = new AmmunitionBag();
 		player.addItemToInventory(bag);
@@ -227,6 +232,8 @@ public class GameSettings {
 		compound.at(41, 15).addItem(new SniperAmmo(bag));
 	}
 
+
+	
 	public NewWorld setUpGame() {
 		setUpVehicles();
 		setUpCompoundHumans();
@@ -238,3 +245,6 @@ public class GameSettings {
 		return newWorld;
 	}
 }
+
+
+

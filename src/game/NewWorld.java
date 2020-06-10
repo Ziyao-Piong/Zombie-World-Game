@@ -19,6 +19,7 @@ public class NewWorld extends World{
 	private int numberOfZombieLeft = 0;
 	private boolean playerLeft = true;
 	private boolean quit = false;
+	private boolean mamboMarieAppear = true;
 	public NewWorld(Display display) {
 		super(display);
 		
@@ -51,7 +52,7 @@ public class NewWorld extends World{
 
 		// This loop is basically the whole game
 		int counter = 0;
-		boolean mamboMarieAppear = true;
+		
 		boolean appearance = false;
 		while (stillRunning()) {
 			GameMap playersMap = actorLocations.locationOf(player).map();
@@ -127,17 +128,39 @@ public class NewWorld extends World{
   		if (quit) {
   			return false;
   		}
-  		//if (actorLocations.contains())
-  		
-  		if (actorLocations.contains(player)){
-  			return true;
+  		numberOfHumanLeft =0;
+  		numberOfZombieLeft = 0;
+  		for (Actor actor : actorLocations) {
+  			if (actor instanceof Human || actor instanceof Farmer){
+  				if (gameMaps.get(0).contains(actor)){
+  					numberOfHumanLeft +=1;
+  				}
+  			}
+  			else if (actor instanceof Zombie || actor instanceof MamboMarie) {
+  				if (gameMaps.get(0).contains(actor)) {
+  					numberOfZombieLeft +=1;
+  				}
+  			}
+  			else if (actor instanceof Player) {
+  				if (gameMaps.get(0).contains(actor)) {
+  					playerLeft = true;
+  				}
+  				
+  				else {
+  					playerLeft = false;
+  				}
+  			}
   		}
-  		else {
+  		if (playerLeft== false || numberOfHumanLeft ==0) {
+  			return false;
+  				
+  		}
+  		else if (numberOfZombieLeft==0) {
   			return false;
   		}
-  		
-  
-  		
+  		else {
+  			return true;
+  		}	
   
   	}
   	/**
