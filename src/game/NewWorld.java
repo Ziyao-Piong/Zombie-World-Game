@@ -159,8 +159,6 @@ public class NewWorld extends World{
   				
   				else {
   					playerLeft = false;
-  					System.out.println(actor);
-  					System.out.println("5555555555555");
   				}
   			}
   		}
