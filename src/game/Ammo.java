@@ -18,7 +18,7 @@ public abstract class Ammo extends Item {
      * @param displayChar the character to use to represent this item if it is on the ground
      */
     public Ammo(String name, char displayChar) {
-        super(name, displayChar, true);
+        super(name, displayChar, false);
         Random random = new Random();
         int initAmmoCount = 5 + random.nextInt(6);
         setAmmoCount(initAmmoCount);

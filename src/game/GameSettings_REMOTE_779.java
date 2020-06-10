@@ -87,9 +87,6 @@ public class GameSettings {
 
 		this.player = new Player("Player", '@', 10000);
 		newWorld.addPlayer(player, compound.at(42, 15));
-		ImmovableItem quitButton = new ImmovableItem("Quit Button",'q',false);
-		quitButton.addAction(new TerminateAction(newWorld));
-		player.addItemToInventory(quitButton);
 	}
 
 	private void setUpVehicles() {
@@ -126,7 +123,6 @@ public class GameSettings {
 			while (compound.at(x, y).containsAnActor());
 			compound.at(x,  y).addActor(new Human(name));
 		}
-
 
 		String[] farmers ={"_Clem","_Jacob"};
 		for (String name : farmers) {

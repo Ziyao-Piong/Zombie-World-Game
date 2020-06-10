@@ -127,6 +127,7 @@ public class NewWorld extends World{
   		if (quit) {
   			return false;
   		}
+  		//if (actorLocations.contains())
   		
   		if (actorLocations.contains(player)){
   			return true;
