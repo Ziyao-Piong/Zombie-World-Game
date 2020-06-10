@@ -116,9 +116,8 @@ public class GameSettings {
 	}
 	
 	private void setUpCompoundHumans() {
-		String[] humans = {"Carlton"};
-//		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
-//				"Elina", "Jaquelyn"};
+		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
+				"Elina", "Jaquelyn"};
 		int x, y;
 		for (String name : humans) {
 			do {
@@ -130,15 +129,15 @@ public class GameSettings {
 			humanList.add(new Human(name));
 		}
 		
-//		String[] farmers ={"_Clem","_Jacob"};
-//		for (String name : farmers) {
-//			do {
-//				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
-//				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
-//			}
-//			while (compound.at(x, y).containsAnActor());
-//			compound.at(x,  y).addActor(new Farmer(name));
-//		}
+		String[] farmers ={"_Clem","_Jacob"};
+		for (String name : farmers) {
+			do {
+				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+			}
+			while (compound.at(x, y).containsAnActor());
+			compound.at(x,  y).addActor(new Farmer(name));
+		}
 	}
 	
 	private void setUpCompoundZombies() {
@@ -150,7 +149,6 @@ public class GameSettings {
 		Zombie zombie6 = new Zombie("Aaargh");
 		Zombie zombie7 = new Zombie("Baaahhh");
 		Zombie zombie8 = new Zombie("Yeeeeet");
-		Zombie zombie9 = new Zombie("ffffff");
 		
 		compound.at(30, 20).addActor(zombie1);
 		compound.at(30,  18).addActor(zombie2);
@@ -160,7 +158,6 @@ public class GameSettings {
 		compound.at(62, 12).addActor(zombie6);
 		compound.at(70, 5).addActor(zombie7);
 		compound.at(5, 6).addActor(zombie8);
-		compound.at(35, 8).addActor(zombie9);
 		
 		zombieList.add(zombie1);
 		zombieList.add(zombie2);
@@ -170,7 +167,6 @@ public class GameSettings {
 		zombieList.add(zombie6);
 		zombieList.add(zombie7);
 		zombieList.add(zombie8);
-		zombieList.add(zombie9);
 	}
 	
 	private void setUpTownZombies() {
