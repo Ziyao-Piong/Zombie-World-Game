@@ -20,6 +20,7 @@ public class NewWorld extends World{
 	private boolean playerLeft = true;
 	private boolean quit = false;
 	private boolean mamboMarieAppear = true;
+	
 	public NewWorld(Display display) {
 		super(display);
 		
@@ -55,9 +56,15 @@ public class NewWorld extends World{
 		
 		boolean appearance = false;
 		while (stillRunning()) {
-			GameMap playersMap = actorLocations.locationOf(player).map();
-			playersMap.draw(display);
 			GameMap gameMapCompound= gameMaps.get(0);
+			if (!actorLocations.contains(player)) {
+				playerLeft = false;
+				break;
+			}
+			else {
+				GameMap playersMap = actorLocations.locationOf(player).map();
+				playersMap.draw(display);
+			}
 			
 			// Process all the actors.
 			for (Actor actor : actorLocations) {
@@ -76,7 +83,7 @@ public class NewWorld extends World{
 					locations.add(secondEdge);
 					locations.add(thirdEdge);
 					locations.add(fourthEdge);
-					int value = random.nextInt(20);
+					int value = random.nextInt(10000);
 					if (value == 0) {
 						gameMapCompound.at(locations.get(random.nextInt(locations.size())).x(),locations.get(random.nextInt(locations.size())).y()).addActor(mamboMarie);
 						appearance = true;
@@ -110,6 +117,7 @@ public class NewWorld extends World{
 				
 
 		}
+		
 		display.println(endGameMessage());
 	}
 
@@ -131,23 +139,28 @@ public class NewWorld extends World{
   		numberOfHumanLeft =0;
   		numberOfZombieLeft = 0;
   		for (Actor actor : actorLocations) {
-  			if (actor instanceof Human || actor instanceof Farmer){
-  				if (gameMaps.get(0).contains(actor)){
-  					numberOfHumanLeft +=1;
-  				}
+  			if (!(actor instanceof Player)) {
+	  			if (actor instanceof Human || actor instanceof Farmer){
+	  				if (gameMaps.get(0).contains(actor)){
+	  					//System.out.println(numberOfHumanLeft);
+	  					numberOfHumanLeft +=1;
+	  				}
+	  			}
   			}
-  			else if (actor instanceof Zombie || actor instanceof MamboMarie) {
+  			if (actor instanceof Zombie || actor instanceof MamboMarie) {
   				if (gameMaps.get(0).contains(actor)) {
   					numberOfZombieLeft +=1;
   				}
   			}
-  			else if (actor instanceof Player) {
+  			if (actor instanceof Player) {
   				if (gameMaps.get(0).contains(actor)) {
   					playerLeft = true;
   				}
   				
   				else {
   					playerLeft = false;
+  					System.out.println(actor);
+  					System.out.println("5555555555555");
   				}
   			}
   		}
@@ -173,17 +186,14 @@ public class NewWorld extends World{
   		if (quit) {
   			return "Quit Game";
   		}
-  		else if (numberOfHumanLeft>0) {
+  		else if (numberOfHumanLeft==0 || !playerLeft) {
+  			return "Player loses";
+  		}
+  		else{
   			return "Player wins";
   		}
-  		else if (numberOfZombieLeft>0){
-  			return "Player loses";
-  		}
-  		else {
-  			return "Player loses";
-  		}
-  			
   	}
+
   	
   	public void quitGame() {
   		quit = true;

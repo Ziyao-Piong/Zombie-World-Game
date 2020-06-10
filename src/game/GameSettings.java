@@ -23,7 +23,6 @@ public class GameSettings {
 	private Helipad helipad = new Helipad();
 	private List<PortableItem> keyList = new ArrayList<>();
 	protected List<Zombie> zombieList = new ArrayList<>();
-	protected List<Human> humanList = new ArrayList<>();
 	private Random rand = new Random();
 	
 	
@@ -86,7 +85,7 @@ public class GameSettings {
 		this.town = new GameMap(groundFactory, townMap);
 		newWorld.addGameMap(town);
 	
-		this.player = new Player("Player", '@', 10000);
+		this.player = new Player("Player", '@', 1000);
 		newWorld.addPlayer(player, compound.at(42, 15));
 		ImmovableItem quitButton = new ImmovableItem("Quit Button",'q',false);
 		quitButton.addAction(new TerminateAction(newWorld));
@@ -126,7 +125,6 @@ public class GameSettings {
 			}
 			while (compound.at(x, y).containsAnActor());
 			compound.at(x,  y).addActor(new Human(name));
-			humanList.add(new Human(name));
 		}
 		
 		String[] farmers ={"_Clem","_Jacob"};
