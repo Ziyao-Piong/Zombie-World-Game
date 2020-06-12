@@ -13,6 +13,8 @@ public abstract class Limb extends WeaponItem{
 	/**
 	 * Constructor for limb so that all limbs will have a damage of 20, 
 	 * and can perform CraftWeaponAction on them.
+	 * @param name the name of the limb
+	 * @param displayChar the display character of this limb
 	 */
 	public Limb(String name, char displayChar) {
 		super(name, displayChar, 20, "hits");
