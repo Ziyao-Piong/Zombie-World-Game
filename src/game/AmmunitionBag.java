@@ -1,11 +1,11 @@
 package game;
 
-public class AmmunitionBag extends PortableItem {
+public class AmmunitionBag extends ImmovableItem {
     private int shotgunAmmo = 0;
     private int sniperAmmo = 0;
 
     public AmmunitionBag() {
-        super("AmmunitionBag", 'B');
+        super("AmmunitionBag", 'B', false);
     }
 
     public void addShotgunAmmo(int shotgunAmmo) {
