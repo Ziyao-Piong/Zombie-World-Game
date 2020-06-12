@@ -4,13 +4,20 @@ Work Breakdown Agreement
 Below specifies the areas each member is responsible for.
 
 Piong Zi Yao
+
 1. Going to town, all the related class that involves transporting player to and fro town map and compound map including EnterVehicleAction, Helipad, Helicopter and GameSettings. 
 
 2. Bonus feature - Helicopter key, modification in GameSettings
 
 3. Bonus feature - Shop and currency system, responsible for coin and coin pouch, VisitShopAction, PickUpCoinAction, and modification in GameSettings.
 
+4. Documentations for going to town including UML diagram
 
+4. Documentations for bonus features - Coin and coin pouch, shop, and helicopter keys
+
+5. Documentations for recommendation (game engine)
+
+ 
 Heng Yi Kin
 1. New weapons: shotgun and sniper rifle 
 

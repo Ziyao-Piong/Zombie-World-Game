@@ -10,6 +10,11 @@ import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Set up the game 
+ * @author ziyaopiong
+ *
+ */
 public class GameSettings {
 
 	private Display display;
@@ -25,8 +30,11 @@ public class GameSettings {
 	protected List<Zombie> zombieList = new ArrayList<>();
 	private Random rand = new Random();
 	
-	
-	
+	/**
+	 * Constructor, also set up the compound map and town map, then add both map into new world,
+	 * then, it will create a player and add it to the compound map and add a quit button to the 
+	 * player's inventory. 
+	 */
 	public GameSettings() {
 		display = new Display();
 		this.newWorld = new NewWorld(display);
@@ -92,6 +100,10 @@ public class GameSettings {
 		player.addItemToInventory(quitButton);
 	}
 	
+	/**
+	 * Set up the helicopters and helipad in the compound map and the town map.
+	 * A set of keys is then created and added to the helipad.
+	 */
 	private void setUpVehicles() {
 		compoundVehicleLocation = compound.at(2, 23);
 		townVehicleLocation = town.at(1, 1);
@@ -114,6 +126,10 @@ public class GameSettings {
 		helipad.addKey(key2);
 	}
 	
+	/**
+	 * Create a number of humans and farmers and randomly place them in the 
+	 * area bounded by fence.
+	 */
 	private void setUpCompoundHumans() {
 		String[] humans = {"Carlton", "May", "Vicente", "Andrea", "Wendy",
 				"Elina", "Jaquelyn"};
@@ -138,6 +154,9 @@ public class GameSettings {
 		}
 	}
 	
+	/**
+	 * Create a number of zombies and put them in compound map.
+	 */
 	private void setUpCompoundZombies() {
 		Zombie zombie1 = new Zombie("Groan");
 		Zombie zombie2 = new Zombie("Boo");
@@ -167,6 +186,9 @@ public class GameSettings {
 		zombieList.add(zombie8);
 	}
 	
+	/**
+	 * Create a number of zombies and place them in town map.
+	 */
 	private void setUpTownZombies() {
 		town.at(3, 12).addActor(new Zombie("Blurrrr"));
 		town.at(18, 9).addActor(new Zombie("Tehehehe"));
@@ -176,6 +198,9 @@ public class GameSettings {
 		town.at(33, 9).addActor(new Zombie("Wohoooooo"));
 	}
 	
+	/**
+	 * Randomly place the keys into the inventory of selected zombies.
+	 */
 	private void setUpKeys() {
 		ArrayList<Zombie> zombies = new ArrayList<>(zombieList);
 		int numberOfKeys = keyList.size();
@@ -186,6 +211,11 @@ public class GameSettings {
 		}
 	}
 	
+	/**
+	 * Create a coin pouch and add it into the player's inventory, then for each 
+	 * zombie, a coin that has PickUpCoinAction is added to their inventory. Then,
+	 * create a shop and place it in the compound map and the town map.
+	 */
 	private void setUpMerchant() {
 		CoinPouch pouch = new CoinPouch();
 		player.addItemToInventory(pouch);
@@ -201,6 +231,10 @@ public class GameSettings {
 		town.at(38, 1).addItem(shop);
 	}
 	
+	/**
+	 * Create a number of shotgun ammo and sniper ammo and place them in 
+	 * the compound map and the town map.
+	 */
 	private void setUpWeapons() {
 		AmmunitionBag bag = new AmmunitionBag();
 		player.addItemToInventory(bag);
@@ -226,8 +260,10 @@ public class GameSettings {
 		compound.at(41, 15).addItem(new SniperAmmo(bag));
 	}
 
-
-	
+	/**
+	 * Set up the game
+	 * @return	a NewWorld
+	 */
 	public NewWorld setUpGame() {
 		setUpVehicles();
 		setUpCompoundHumans();
