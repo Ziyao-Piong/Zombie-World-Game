@@ -10,6 +10,7 @@ public class Sniper extends Gun {
 
     /**
      * Constructor that initialises the instance variables name, displayChar , damage and the verb of the Sniper.
+     * Added GunCapability.SNIPER.
      */
     public Sniper() {
         super("Sniper", 'S', 50, "snipes", sniperAmmo);

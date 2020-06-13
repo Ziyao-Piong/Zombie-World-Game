@@ -1,12 +1,12 @@
 package game;
 
 /**
-     * An immovable item that collects ammo for the player,
+ * An immovable item that collects ammo for the player,
  *
  * @author Yi kin Heng
  */
 public class AmmunitionBag extends ImmovableItem {
-	
+
     private int shotgunAmmo = 0;
     private int sniperAmmo = 0;
 
@@ -32,13 +32,19 @@ public class AmmunitionBag extends ImmovableItem {
     public void addSniperAmmo(int sniperAmmo) {
         this.sniperAmmo += sniperAmmo;
     }
-    
+
+    /***
+     * method that decreases the instance variable of int shotgunAmmo by 1 ammo whenever it is used.
+     */
     public void useShotgunAmmo() {
-    	this.shotgunAmmo -= 1;
+        this.shotgunAmmo -= 1;
     }
-    
+
+    /***
+     * method that decreases the instance variable of int sniperAmmo by 1 ammo whenever it is used.
+     */
     public void useSniperAmmo() {
-    	this.sniperAmmo -= 1;
+        this.sniperAmmo -= 1;
     }
 
     /***
