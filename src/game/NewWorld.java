@@ -33,6 +33,8 @@ public class NewWorld extends World{
 	 *
 	 * On each iteration the gameloop does the following: - displays the player's
 	 * map - processes the actions of every Actor in the game, regardless of map
+	 * 
+	 * Add a Mambo Marie on the compound map if there is no Mambo Marie on the specific map. 
 	 *
 	 * We could either only process the actors on the current map, which would make
 	 * time stop on the other maps, or we could process all the actors. We chose to
@@ -109,9 +111,12 @@ public class NewWorld extends World{
 	/**
 	 * Returns true if the game is still running.
 	 *
-	 * The game is considered to still be running if the player is still around.
+	 * The game is considered to still be running if the player is still around and at least 1 human is still on the map and
+	 * at least 1 zombie or 1 Mambo Marie is on the map.
+	 * 
+	 * 
 	 *
-	 * @return true if the player is still on the map.
+	 * @return true if the player is still on the map and at least a human is on the map and there is at least 1 zombie or 1 Mambo Marie is on the map.
 	 */
 
   	@Override 
@@ -158,7 +163,8 @@ public class NewWorld extends World{
   	/**
 	 * Return a string that can be displayed when the game ends.
 	 *
-	 * @return the string "Game Over"
+	 * @return the string "Quit Game" if player decides to quit game, the string "Player loses" when player is dead or there is no human left on the map
+	 * the string" Player wins" when there's no zombie and Mambo Marie on the map.
 	 */
   	@Override
 	protected String endGameMessage() {

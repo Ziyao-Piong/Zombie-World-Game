@@ -12,39 +12,38 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 
 /**
- * @author Peir Jing
+ * 
+ * A Mambo Marie is created with the ability to wander around and spawn zombie
+ * 
+ * 
+ * @author Peir Jing Chuang
  *
  */
+
 public class MamboMarie extends ZombieActor {
 
 	protected Random random = new Random();
 	private Behaviour[] behaviours = { new SpawnZombieBehaviour(),
-			new ShoutBehaviour(),
-			new PickUpWeaponBehaviour(),
-			new AttackBehaviour(ZombieCapability.ALIVE),
-			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour() 
 	};
 
+	/**
+	 * Constructor
+	 * @param name	Name of the Mambo Marie
+	 */
 	public MamboMarie(String name) {
 		super(name, 'M', 100, ZombieCapability.UNDEAD, IdentityCapability.MAMBOMARIE);
 	}
 	
+
 	/**
-	 * Return the intrinsic weapon of this zombie.
+	 * If a Mambo Marie can spawn zombies, it will.  If not, it will wander around.
 	 * 
+	 * @param actions list of possible Actions
+	 * @param lastAction previous Action, if it was a multiturn action
+	 * @param map the map where the current Mambo Marie is
+	 * @param display the Display where the Mambo Marie's utterances will be displayed
 	 */
-	@Override
-	public IntrinsicWeapon getIntrinsicWeapon() {
-		if (random.nextDouble() < 0.5) {
-			return new IntrinsicWeapon(10, "punches");
-		} else {
-			return new IntrinsicWeapon(20, "bites");
-		}
-	}
-
-
-
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		for (Behaviour behaviour : behaviours) {
