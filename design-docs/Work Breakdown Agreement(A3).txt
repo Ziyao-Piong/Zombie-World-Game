@@ -1,4 +1,5 @@
 Assignment 3
+A2099
 Work Breakdown Agreement
 
 Below specifies the areas each member is responsible for.
@@ -17,12 +18,16 @@ Piong Zi Yao
 
 5. Documentations for recommendation (game engine)
 
+6. Documentations for changes in design (A3) and update Design Rationale (A1&2)
+
  
 Heng Yi Kin
+
 1. New weapons: shotgun and sniper rifle 
 
 
 Pier Jing Chuang
+
 1. Mambo Marie
 
 2. Ending the game
