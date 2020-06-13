@@ -29,6 +29,7 @@ public class VisitShopAction extends Action {
 	 * Constructor, it will print a submenu of items with prices.
 	 * 
 	 * @param pouch		the coin pouch of the player
+	 * @param bag		the ammunition bag of the player
 	 * @param display	the display
 	 */
 	public VisitShopAction(CoinPouch pouch, AmmunitionBag bag, Display display) {
