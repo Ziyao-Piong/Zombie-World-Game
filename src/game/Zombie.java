@@ -38,7 +38,7 @@ public class Zombie extends ZombieActor {
 	 * @param name	Name of the zombie
 	 */
 	public Zombie(String name) {
-		super(name, 'Z', 100, ZombieCapability.UNDEAD);
+		super(name, 'Z', 100, ZombieCapability.UNDEAD, IdentityCapability.ZOMBIE);
 	}
 	
 	/**

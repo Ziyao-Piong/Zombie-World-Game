@@ -6,7 +6,8 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
 /**
- * Returns a DoNothingAction in alternating turn if the zombie only has one leg, or every turn if zombie has no leg
+ * Returns a DoNothingAction in alternating turn if the zombie only has one leg,
+ * or every turn if zombie has no leg
  *  
  * @author ziyaopiong
  *

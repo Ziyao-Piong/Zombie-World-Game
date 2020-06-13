@@ -21,6 +21,7 @@ public class Farmer extends Human {
      */
     public Farmer(String name) {
         super(name, 'F', 50);
+        addCapability(IdentityCapability.FARMER);
     }
 
     /**

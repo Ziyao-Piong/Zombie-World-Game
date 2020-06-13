@@ -24,7 +24,7 @@ public class Human extends ZombieActor {
      * @param name the human's display name
      */
     public Human(String name) {
-        super(name, 'H', 50, ZombieCapability.ALIVE);
+        super(name, 'H', 50, ZombieCapability.ALIVE, IdentityCapability.HUMAN);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Human extends ZombieActor {
      * @param hitPoints   amount of damage that the Human can take before it dies
      */
     protected Human(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints, ZombieCapability.ALIVE);
+        super(name, displayChar, hitPoints, ZombieCapability.ALIVE, IdentityCapability.HUMAN);
     }
 
     @Override

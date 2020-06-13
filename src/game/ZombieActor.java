@@ -11,21 +11,17 @@ import edu.monash.fit2099.engine.GameMap;
  */
 public abstract class ZombieActor extends Actor {
 	
-	public ZombieActor(String name, char displayChar, int hitPoints, ZombieCapability team) {
+	public ZombieActor(String name, char displayChar, int hitPoints, ZombieCapability team, IdentityCapability identity) {
 		super(name, displayChar, hitPoints);
-		
 		addCapability(team);
+		addCapability(identity);
 	}
 	
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions list = super.getAllowableActions(otherActor, direction, map);
 		if (otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))
-			if (this.hasCapability(ZombieCapability.UNDEAD)) {
-				list.add(new AttackZombieAction(this));
-			} else if (this.hasCapability(ZombieCapability.ALIVE)){
-				list.add(new AttackHumanAction(this));
-			}
+			list.add(new AttackAction(this));
 		return list;
 	}
 }

@@ -45,13 +45,9 @@ public class AttackBehaviour implements Behaviour {
 		for (Exit e: exits) {
 			if (!(e.getDestination().containsAnActor()))
 				continue;
-			if (e.getDestination().getActor().hasCapability(attackableTeam) && attackableTeam == ZombieCapability.ALIVE) {
-				return new AttackHumanAction(e.getDestination().getActor());
-			
-			} else if (e.getDestination().getActor().hasCapability(attackableTeam) && attackableTeam == ZombieCapability.UNDEAD) {
-				return new AttackZombieAction(e.getDestination().getActor());
+			if (e.getDestination().getActor().hasCapability(attackableTeam)) {
+				return new AttackAction(e.getDestination().getActor());
 			}
-		
 		} return null;		
 	}
 
