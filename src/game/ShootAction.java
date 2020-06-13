@@ -20,7 +20,7 @@ public class ShootAction extends Action {
 	private AmmunitionBag bag;
 	private Gun gun;
 	private Display display;
-	private Random rand;
+	private Random rand = new Random();
 	
 	public ShootAction(AmmunitionBag bag, Gun gun, Display display) {
 		this.bag = bag;
@@ -96,7 +96,7 @@ public class ShootAction extends Action {
 			}
 		}
 		if (result == "") {
-			return actor + "did not hit anybody";
+			return actor + " did not hit anybody";
 		}
 		return result;
 	}
