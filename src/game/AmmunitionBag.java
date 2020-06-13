@@ -1,7 +1,7 @@
 package game;
 
 /**
- * An immovable item that collects ammo for the player,
+     * An immovable item that collects ammo for the player,
  *
  * @author Yi kin Heng
  */

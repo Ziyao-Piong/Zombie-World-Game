@@ -1,7 +1,7 @@
 package game;
 
 /**
- * An class representing Sniper that extends Super class Guns which is also a type of weapon.
+ * A class representing Sniper that extends Super class Guns which is also a type of weapon.
  *
  * @author Yi Kin Heng
  */

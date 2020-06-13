@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Action;
 import java.util.List;
 
 /**
- * An class representing Shotgun that extends Super class Guns which is also a type of weapon.
+ * A class representing Shotgun that extends Super class Guns which is also a type of weapon.
  *
  * @author Yi Kin Heng
  */
