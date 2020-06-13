@@ -64,7 +64,7 @@ public class AttackAction extends Action {
 			if (rand.nextDouble() < 0.4) {
 				return actor + " misses " + target + ".";
 			} 
-			if (actor.hasCapability(IdentityCapability.ZOMBIE)) {
+			if (target.hasCapability(IdentityCapability.ZOMBIE)) {
 				Zombie zombieTarget = (Zombie) target;
 				
 				String limb = zombieTarget.zombieIsAttacked();
