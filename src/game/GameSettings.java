@@ -266,14 +266,14 @@ public class GameSettings {
 		town.at(25, 2).addItem(new SniperAmmo(bag));
 
 		compound.at(42, 16).addItem(new ShotgunAmmo(bag));
-		compound.at(42, 14).addItem(new ShotgunAmmo(bag));
-		compound.at(43, 15).addItem(new ShotgunAmmo(bag));
-		compound.at(41, 15).addItem(new ShotgunAmmo(bag));
+		compound.at(79, 0).addItem(new ShotgunAmmo(bag));
+		compound.at(79, 24).addItem(new ShotgunAmmo(bag));
+		compound.at(0, 0).addItem(new ShotgunAmmo(bag));
 
 		compound.at(42, 16).addItem(new SniperAmmo(bag));
-		compound.at(42, 14).addItem(new SniperAmmo(bag));
-		compound.at(43, 15).addItem(new SniperAmmo(bag));
-		compound.at(41, 15).addItem(new SniperAmmo(bag));
+		compound.at(42, 9).addItem(new SniperAmmo(bag));
+		compound.at(0, 15).addItem(new SniperAmmo(bag));
+		compound.at(79, 15).addItem(new SniperAmmo(bag));
 	}
 
 	/**

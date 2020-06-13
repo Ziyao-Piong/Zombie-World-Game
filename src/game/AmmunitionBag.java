@@ -56,6 +56,20 @@ public class AmmunitionBag extends ImmovableItem {
     public int getSniperAmmo() {
         return sniperAmmo;
     }
+    
+    public boolean hasShotgunAmmo() {
+    	if (shotgunAmmo > 0) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public boolean hasSniperAmmo() {
+    	if (sniperAmmo > 0) {
+    		return true;
+    	}
+    	return false;
+    }
 
 
 }

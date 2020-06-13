@@ -35,6 +35,12 @@ Pier Jing Chuang
 
 3. Bonus feature - Bombs 
 
+4. Documentations for Mambo Marie including UML diagram
+
+5. Documentations for Ending Game including UML diagram
+
+6. Sequential Diagram for Quit Game & Spawn Zombie
+
 
 
 
