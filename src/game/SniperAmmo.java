@@ -9,7 +9,8 @@ package game;
 public class SniperAmmo extends Ammo {
     /***
      * Constructor that calls Super class's constructor to initialise the name and displayChar of the SniperAmmo item.
-     * @param ammunitionBag the ammunition bag where this amma is added to
+     * The SniperAmmo can also be picked up by the player.
+     * @param ammunitionBag the ammunition bag where this ammo is added to
      */
     public SniperAmmo(AmmunitionBag ammunitionBag) {
         super("SniperAmmo", '*');

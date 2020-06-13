@@ -14,7 +14,11 @@ public class SpawnZombieBehaviour implements Behaviour {
 
 	private int countdown = 9;
 	
-	public void tick(GameMap map) {
+	/**
+	 * Count the turn to spawn zombies
+	 * 
+	 */
+	public void tick() {
         if (countdown > 0) {
         	countdown -=1;
         }
@@ -40,7 +44,7 @@ public class SpawnZombieBehaviour implements Behaviour {
 		}
 		
 		else {
-			tick(map);
+			tick();
 			return null;
 		}
 		

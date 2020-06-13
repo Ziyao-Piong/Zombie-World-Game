@@ -11,5 +11,4 @@ public class Shotgun extends Gun {
         super("Shotgun", 's', 40, "blasts", shotgunAmmo);
         addCapability(GunCapability.SHOTGUN);
     }
-
 }

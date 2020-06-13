@@ -24,14 +24,27 @@ public abstract class Ammo extends Item {
         setAmmoCount(initAmmoCount);
     }
 
+    /***
+     * Gets the instance variable of int ammoCount
+     * @return int ammoCount
+     */
+
     public int getAmmoCount() {
         return ammoCount;
     }
 
+    /***
+     * Setter for the instance variable of int ammoCount
+     * @param ammoCount the number of ammo
+     */
     public void setAmmoCount(int ammoCount) {
         this.ammoCount = ammoCount;
     }
 
+    /***
+     * increases the instance variable of int ammoCount
+     * @param ammoCount the number of ammo to increase
+     */
     public void addAmmoCount(int ammoCount) {
         this.ammoCount += ammoCount;
     }

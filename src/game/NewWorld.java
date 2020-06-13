@@ -19,7 +19,7 @@ public class NewWorld extends World{
 	private int numberOfZombieLeft = 0;
 	private boolean playerLeft = true;
 	private boolean quit = false;
-	private boolean mamboMarieAppear = true;
+	private boolean mamboMarieAllowedToAppear = true;
 	
 	public NewWorld(Display display) {
 		super(display);
@@ -52,7 +52,7 @@ public class NewWorld extends World{
 		}
 		// This loop is basically the whole game
 		int counter = 0;
-		boolean appearance = false;
+		boolean appearanceOfMamboMarie = false;
 		
 		while (stillRunning()) {
 			GameMap gameMapCompound= gameMaps.get(0);
@@ -71,7 +71,7 @@ public class NewWorld extends World{
 			}
 			if (!gameMapCompound.contains(mamboMarie)) {
 				//AttackAction attackAction = new AttackAction(mamboMarie);
-				if (mamboMarieAppear) {
+				if (mamboMarieAllowedToAppear) {
 					Location firstEdge = new Location(gameMapCompound, 0, 0);
 					Location secondEdge = new Location(gameMapCompound, gameMapCompound.getXRange().max(), 0);
 					Location thirdEdge = new Location(gameMapCompound, 0, gameMapCompound.getYRange().max());
@@ -83,7 +83,7 @@ public class NewWorld extends World{
 					int value = random.nextInt(20);
 					if (value == 0) {
 						gameMapCompound.at(locations.get(random.nextInt(locations.size())).x(),locations.get(random.nextInt(locations.size())).y()).addActor(mamboMarie);
-						appearance = true;
+						appearanceOfMamboMarie = true;
 						counter = 0;
 					}
 				}
@@ -94,9 +94,9 @@ public class NewWorld extends World{
 			if (counter == 30) {
 				gameMapCompound.removeActor(mamboMarie);
 			}
-			if(appearance) {
+			if(appearanceOfMamboMarie) {
 				if ((counter < 30) &&(!gameMapCompound.contains(mamboMarie))) {
-					mamboMarieAppear = false;
+					mamboMarieAllowedToAppear = false;
 					}
 			}
 			// Tick over all the maps. For the map stuff.

@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"game","c":"NewWorld","l":"NewWorld(Display)","url":"%3Cinit%3E(edu.monash.fit2099.engine.Display)"},{"p":"game","c":"NewWorld","l":"quitGame()"},{"p":"game","c":"NewWorld","l":"run()"}]
