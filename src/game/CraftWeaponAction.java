@@ -13,9 +13,9 @@ import edu.monash.fit2099.engine.GameMap;
  */
 public class CraftWeaponAction extends Action {
 	
-	private Limb oldWeapon;
+	private UpgradableWeapon oldWeapon;
 	
-	public CraftWeaponAction(Limb oldWeapon) {
+	public CraftWeaponAction(UpgradableWeapon oldWeapon) {
 		this.oldWeapon = oldWeapon;
 	}
 	

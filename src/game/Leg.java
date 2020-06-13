@@ -3,15 +3,19 @@ package game;
 import edu.monash.fit2099.engine.WeaponItem;
 
 /**
- * A type of limb which is also a weapon.
+ * A type of upgradable weapon.
  * 
  * @author ziyaopiong
  *
  */
-public class Leg extends Limb{
+public class Leg extends UpgradableWeapon{
 	
+	//The weapon leg will become a ZombieMace if upgraded
 	private WeaponItem upgradedWeapon = new ZombieMace();
 	
+	/**
+	 * Constructor
+	 */
 	public Leg() {
 		super("leg", 'L');
 	}
