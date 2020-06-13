@@ -23,7 +23,8 @@ Piong Zi Yao
  
 Heng Yi Kin
 
-1. New weapons: shotgun and sniper rifle 
+1. New weapons: shotgun and sniper rifle
+2. Ammo Abstract class, ShotgunAmmo, SniperAmmo
 
 
 Pier Jing Chuang
@@ -39,3 +40,4 @@ Pier Jing Chuang
 
 Piong Zi Yao - I accept this WBA
 Peir Jing Chuang - I accept this WBA
+Heng Yi Kin - I accept this WBA
