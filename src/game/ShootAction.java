@@ -15,6 +15,12 @@ import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.Weapon;
 
+/**
+ * An action for using shotgun and sniper
+ * 
+ * @author ziyaopiong
+ *
+ */
 public class ShootAction extends Action {
 	
 	private AmmunitionBag bag;
@@ -22,12 +28,27 @@ public class ShootAction extends Action {
 	private Display display;
 	private Random rand = new Random();
 	
+	/**
+	 * Constructor
+	 * @param bag		the ammunition bag of the player
+	 * @param gun		the gun that equipped with this shoot action
+	 * @param display	the display
+	 */
 	public ShootAction(AmmunitionBag bag, Gun gun, Display display) {
 		this.bag = bag;
 		this.gun = gun;
 		this.display = display;
 	}
 	
+	/**
+	 * Display the directions the player can choose to shoot, then get an
+	 * input from the player
+	 * 
+	 * @param actor	the player
+	 * @param map	the game map
+	 * @return		an exit which indicates the directions this actor 
+	 * 				choose to shoot
+	 */
 	private Exit displayMenu(Actor actor, GameMap map) {
 		if (gun.hasCapability(GunCapability.SHOTGUN)) {
 			int shotgunAmmo = bag.getShotgunAmmo();
@@ -68,7 +89,7 @@ public class ShootAction extends Action {
 		if (gun.hasCapability(GunCapability.SHOTGUN)) {
 			ArrayList<Location> attackArea = attackArea(direction, actorLocation, map);
 			for (Location location: attackArea) {
-				if (location.containsAnActor()) {
+				if (location.containsAnActor() && bag.hasShotgunAmmo()) {
 					Actor target = location.getActor();
 					
 					if (rand.nextDouble() < 0.75) {
@@ -98,6 +119,14 @@ public class ShootAction extends Action {
 		return result;
 	}
 	
+	/**
+	 * Compute the locations that are within the firing range of the shotgun
+	 * 
+	 * @param direction		the location that indicates the direction the player choose to shoot
+	 * @param actorLocation	the location of the player
+	 * @param map			the game map
+	 * @return				an arraylist containing a list of locations that are within firing range
+	 */
 	public ArrayList<Location> attackArea(Location direction, Location actorLocation, GameMap map) {
 		int xDirection = direction.x();
 		int yDirection = direction.y();
