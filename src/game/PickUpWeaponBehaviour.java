@@ -16,9 +16,7 @@ import edu.monash.fit2099.engine.Item;
  */
 public class PickUpWeaponBehaviour implements Behaviour {
 	
-	
 	private Random random = new Random();
-	
 	
 	/**
 	 * Returns an pickUpItemAction if the item
@@ -46,11 +44,6 @@ public class PickUpWeaponBehaviour implements Behaviour {
 		else {
 			return null;
 		}
-		
-		
 	}
-		
-		
-	
 
 }

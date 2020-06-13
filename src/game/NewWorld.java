@@ -44,17 +44,14 @@ public class NewWorld extends World{
 	public void run() {
 		if (player == null)
 			throw new IllegalStateException();
-		
-
 		// initialize the last action map to nothing actions;
 		for (Actor actor : actorLocations) {
 			lastActionMap.put(actor, new DoNothingAction());
 		}
-
 		// This loop is basically the whole game
 		int counter = 0;
-		
 		boolean appearance = false;
+		
 		while (stillRunning()) {
 			GameMap gameMapCompound= gameMaps.get(0);
 			if (!actorLocations.contains(player)) {
@@ -65,12 +62,10 @@ public class NewWorld extends World{
 				GameMap playersMap = actorLocations.locationOf(player).map();
 				playersMap.draw(display);
 			}
-			
 			// Process all the actors.
 			for (Actor actor : actorLocations) {
 				if (stillRunning())
 					processActorTurn(actor);
-					
 			}
 			if (!gameMapCompound.contains(mamboMarie)) {
 				//AttackAction attackAction = new AttackAction(mamboMarie);
@@ -90,34 +85,23 @@ public class NewWorld extends World{
 						counter = 0;
 					}
 				}
-					
 			}
 			if (gameMapCompound.contains(mamboMarie)) {
 				counter +=1;
-				
 			}
 			if (counter == 30) {
 				gameMapCompound.removeActor(mamboMarie);
-				
 			}
 			if(appearance) {
 				if ((counter < 30) &&(!gameMapCompound.contains(mamboMarie))) {
 					mamboMarieAppear = false;
 					}
 			}
-//			numberOfHumanLeft = 0;
-//			numberOfZombieLeft = 0;
-
 			// Tick over all the maps. For the map stuff.
 			for (GameMap gameMap : gameMaps) {
-				
-			
 				gameMap.tick();
 			}
-				
-
 		}
-		
 		display.println(endGameMessage());
 	}
 
@@ -155,16 +139,13 @@ public class NewWorld extends World{
   			if (actor instanceof Player) {
   				if (gameMaps.get(0).contains(actor) || gameMaps.get(1).contains(actor)) {
   					playerLeft = true;
-  				}
-  				
-  				else {	
+  				} else {	
   					playerLeft = false;
   				}
   			}
   		}
   		if (playerLeft== false || numberOfHumanLeft ==0) {
-  			return false;
-  				
+  			return false;	
   		}
   		else if (numberOfZombieLeft==0) {
   			return false;
@@ -172,8 +153,8 @@ public class NewWorld extends World{
   		else {
   			return true;
   		}	
-  
   	}
+  	
   	/**
 	 * Return a string that can be displayed when the game ends.
 	 *
@@ -192,7 +173,9 @@ public class NewWorld extends World{
   		}
   	}
 
-  	
+  	/**
+  	 * A setter that set quit to true.
+  	 */
   	public void quitGame() {
   		quit = true;
   	}

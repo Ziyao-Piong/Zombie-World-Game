@@ -37,16 +37,22 @@ public class AttackAction extends Action {
 		this.target = target;
 	}
 
+	/**
+	 * If actor is a zombie, it will either use a weapon, bite or punch, where bite has a lower
+	 * hit rate than the other two. If the actor is a human or player, a successful hit on the 
+	 * zombie will have a possibility to cause the zombie to lose a limb.
+	 * If target died, all the items it holds will be dropped onto the ground
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		Weapon weapon = actor.getWeapon();
 		
 		if (actor.hasCapability(ZombieCapability.UNDEAD) && target.hasCapability(ZombieCapability.ALIVE)) {
 			if (weapon == new IntrinsicWeapon(20, "bites")) {
-				if (!(rand.nextDouble()<0.25)) {
+				if (rand.nextDouble() < 0.75) {	// bite action has a lower hit rate
 					return actor + "misses "+ target;
 				} else {
-					actor.heal(5);
+					actor.heal(5); // a successful bite will restore 5 hp to the zombie
 				}
 			} else {
 				if (rand.nextBoolean()) {
@@ -78,8 +84,14 @@ public class AttackAction extends Action {
 		return result;
 	}
 	
-	
-	
+	/**
+	 * Place the limb dropped by the zombie on random location adjacent to the zombie.
+	 * Zombie might drop one item it's holding if it loses one arm and has another arm
+	 * left attached, and it will drop all the item it's holding if it loses both arms.
+	 * @param limb	the limb dropped by the zombie
+	 * @param zombieTarget	the zombie	
+	 * @param map	the game map
+	 */
 	private void dropLimb(String limb, Zombie zombieTarget, GameMap map) {
 		List<Exit> exits = new ArrayList<Exit>(map.locationOf(zombieTarget).getExits());
 		Location dropLocation = exits.get(rand.nextInt(exits.size())).getDestination();

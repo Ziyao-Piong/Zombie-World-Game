@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
 public class TerminateAction extends Action  {
+	
 	private NewWorld newWorld;
 	
 	public TerminateAction(NewWorld newWorld) {

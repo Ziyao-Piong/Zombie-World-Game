@@ -6,11 +6,8 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class SpawnZombieAction extends Action {
 	
-		
-		
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		// TODO Auto-generated method stub
 		int i;
 		for (i=1; i<6; i++) {
 			int x, y;
@@ -23,13 +20,10 @@ public class SpawnZombieAction extends Action {
 		
 		}
 		return menuDescription(actor);
-			
-		
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		// TODO Auto-generated method stub
 		return actor + " has spwaned 5 zombies.";
 	}
 	

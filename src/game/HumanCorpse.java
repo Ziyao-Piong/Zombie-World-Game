@@ -1,6 +1,5 @@
 package game;
 
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
 import java.util.Random;
@@ -11,7 +10,7 @@ import java.util.Random;
  *
  * @author Yi Kin Heng
  */
-public class HumanCorpse extends Item {
+public class HumanCorpse extends ImmovableItem {
     private int countdown ;
     private String deadHumanName;
 

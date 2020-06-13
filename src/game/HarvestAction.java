@@ -32,9 +32,9 @@ public class HarvestAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         harvestLocation.setGround(new Dirt());
-        if (actor instanceof Player) {
+        if (actor.hasCapability(IdentityCapability.PLAYER)) {
             actor.addItemToInventory(new Wheat());
-        } else if (actor instanceof Farmer) {
+        } else if (actor.hasCapability(IdentityCapability.FARMER)) {
             harvestLocation.addItem(new Wheat());
         }
         return menuDescription(actor);

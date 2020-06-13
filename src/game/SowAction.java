@@ -22,8 +22,7 @@ public class SowAction extends Action {
     public SowAction(Exit exit) {
         this.exit = exit;
     }
-
-
+    
     /**
      * Overrides the super class's execute method to sow Crop by changing the Dirt to Crop.
      * returns  a description of what happened that can be displayed to the user.

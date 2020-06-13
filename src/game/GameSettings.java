@@ -29,6 +29,8 @@ public class GameSettings {
 	private List<PortableItem> keyList = new ArrayList<>();
 	protected List<Zombie> zombieList = new ArrayList<>();
 	private Random rand = new Random();
+	private AmmunitionBag bag;
+	private CoinPouch pouch;
 	
 	/**
 	 * Constructor, also set up the compound map and town map, then add both map into new world,
@@ -217,7 +219,7 @@ public class GameSettings {
 	 * create a shop and place it in the compound map and the town map.
 	 */
 	private void setUpMerchant() {
-		CoinPouch pouch = new CoinPouch();
+		pouch = new CoinPouch();
 		player.addItemToInventory(pouch);
 		
 		for (Zombie zombie: zombieList) {
@@ -226,7 +228,7 @@ public class GameSettings {
 			zombie.addItemToInventory(coin);
 		}
 		ImmovableItem shop = new ImmovableItem("Shop", '&', false);
-		shop.addAction(new VisitShopAction(pouch, display));
+		shop.addAction(new VisitShopAction(pouch, bag, display));
 		compound.at(76, 2).addItem(shop);
 		town.at(38, 1).addItem(shop);
 	}
@@ -236,7 +238,7 @@ public class GameSettings {
 	 * the compound map and the town map.
 	 */
 	private void setUpWeapons() {
-		AmmunitionBag bag = new AmmunitionBag();
+		bag = new AmmunitionBag();
 		player.addItemToInventory(bag);
 
 		town.at(13, 16).addItem(new ShotgunAmmo(bag));
@@ -270,8 +272,8 @@ public class GameSettings {
 		setUpCompoundZombies();
 		setUpTownZombies();
 		setUpKeys();
-		setUpMerchant();
 		setUpWeapons();
+		setUpMerchant();
 		return newWorld;
 	}
 }

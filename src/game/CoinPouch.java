@@ -11,7 +11,7 @@ public class CoinPouch extends ImmovableItem{
 	private int coins = 0;
 	
 	/**
-	 * Constructor
+	 * Constructor, it cannot be dropped by the player.
 	 */
 	public CoinPouch() {
 		super("CoinPouch", 'p', false);

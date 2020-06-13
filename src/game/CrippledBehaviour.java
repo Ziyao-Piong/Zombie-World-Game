@@ -16,6 +16,10 @@ public class CrippledBehaviour implements Behaviour {
 	
 	private Zombie zombie;
 	
+	/**
+	 * Return DoNothingAction if the zombie has no leg, or on every second turn
+	 * if the zombie only has one leg. Else return null.
+	 */
 	public Action getAction(Actor actor, GameMap map) {
 		if (actor.hasCapability(ZombieCapability.UNDEAD)) {
 			this.zombie = (Zombie) actor;

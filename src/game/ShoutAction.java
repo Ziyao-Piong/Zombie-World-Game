@@ -32,7 +32,6 @@ public class ShoutAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		// TODO Auto-generated method stub
 		return menuDescription(actor) ;
 	}
 
@@ -44,7 +43,6 @@ public class ShoutAction extends Action {
 	 */
 	@Override
 	public String menuDescription(Actor actor) {
-		// TODO Auto-generated method stub
 		return actor + " shouts " + word;
 	}
 	

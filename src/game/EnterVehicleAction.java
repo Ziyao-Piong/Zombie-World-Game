@@ -62,9 +62,6 @@ public class EnterVehicleAction extends Action {
 		return result;
 	}
 	
-	/**
-	 * A string indicates the option for the player to unlock the helicopter.
-	 */
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " unlocks the helicopter";
