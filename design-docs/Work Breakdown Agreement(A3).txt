@@ -25,6 +25,7 @@ Heng Yi Kin
 
 1. New weapons: shotgun and sniper rifle
 2. Ammo Abstract class, ShotgunAmmo, SniperAmmo
+3. Documentations for Guns and Ammo including UML diagram
 
 
 Pier Jing Chuang
