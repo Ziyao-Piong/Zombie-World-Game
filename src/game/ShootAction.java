@@ -69,10 +69,13 @@ public class ShootAction extends Action {
 			ArrayList<Location> attackArea = attackArea(direction, actorLocation, map);
 			for (Location location: attackArea) {
 				if (location.containsAnActor()) {
+					System.out.println(location.toString());
 					Actor target = location.getActor();
 					
 					if (rand.nextDouble() < 0.75) {
+						System.out.println(2);
 						if (target.hasCapability(IdentityCapability.ZOMBIE)) {
+							System.out.println(3);
 							Zombie zombieTarget = (Zombie) target;
 							String limb = zombieTarget.zombieIsAttacked();
 							if (limb != null) {
