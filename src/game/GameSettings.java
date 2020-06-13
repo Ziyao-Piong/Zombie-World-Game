@@ -192,12 +192,26 @@ public class GameSettings {
 	 * Create a number of zombies and place them in town map.
 	 */
 	private void setUpTownZombies() {
-		town.at(3, 12).addActor(new Zombie("Blurrrr"));
-		town.at(18, 9).addActor(new Zombie("Tehehehe"));
-		town.at(31, 5).addActor(new Zombie("Daggggg"));
-		town.at(14, 13).addActor(new Zombie("Lurgh"));
-		town.at(23, 1).addActor(new Zombie("Raaaa"));
-		town.at(33, 9).addActor(new Zombie("Wohoooooo"));
+		Zombie zombie1 = new Zombie("Blurrrr");
+		Zombie zombie2 = new Zombie("Tehehehe");
+		Zombie zombie3 = new Zombie("Daggggg");
+		Zombie zombie4 = new Zombie("Lurgh");
+		Zombie zombie5 = new Zombie("Raaaa");
+		Zombie zombie6 = new Zombie("Wohoooooo");
+		
+		town.at(3, 12).addActor(zombie1);
+		town.at(18, 9).addActor(zombie2);
+		town.at(31, 5).addActor(zombie3);
+		town.at(14, 13).addActor(zombie4);
+		town.at(23, 1).addActor(zombie5);
+		town.at(33, 9).addActor(zombie6);
+		
+		zombieList.add(zombie1);
+		zombieList.add(zombie2);
+		zombieList.add(zombie3);
+		zombieList.add(zombie4);
+		zombieList.add(zombie5);
+		zombieList.add(zombie6);
 	}
 	
 	/**
@@ -274,6 +288,9 @@ public class GameSettings {
 		setUpKeys();
 		setUpWeapons();
 		setUpMerchant();
+		Gun shotgun = new Shotgun();
+		shotgun.addAction(new ShootAction(bag, shotgun, display));
+		player.addItemToInventory(shotgun);
 		return newWorld;
 	}
 }

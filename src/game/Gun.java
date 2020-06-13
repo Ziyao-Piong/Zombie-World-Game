@@ -1,5 +1,6 @@
 package game;
 
+import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.WeaponItem;
 
 /**
@@ -8,7 +9,8 @@ import edu.monash.fit2099.engine.WeaponItem;
  * @author Yi Kin Heng
  */
 public abstract class Gun extends WeaponItem {
-    private Ammo ammoType;
+    
+	private Ammo ammoType;
 
     /**
      * Constructor.
@@ -31,5 +33,14 @@ public abstract class Gun extends WeaponItem {
     public boolean hasAmmo() {
         return ammoType.getAmmoCount() > 0;
     }
+    
+    /**
+	 * Add an action to the gun's list of allowable actions
+	 * @param action	an action to be added the gun's list of allowable actions
+	 */
+	public void addAction(Action action) {
+		this.allowableActions.add(action);
+	}
+
 
 }

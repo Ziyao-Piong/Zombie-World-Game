@@ -25,7 +25,8 @@ public class PickUpAmmoAction extends Action {
             map.locationOf(actor).removeItem(ammo);
 
         }
-        return actor + " collected " + ammo.getAmmoCount() + " " + ammo.getClass().getSimpleName() + ". ShotgunAmmo: " + ammunitionBag.getShotgunAmmo() + " SniperAmmo: " + ammunitionBag.getSniperAmmo();
+        return actor + " collected " + ammo.getAmmoCount() + " " + ammo.getClass().getSimpleName() +
+        		". ShotgunAmmo: " + ammunitionBag.getShotgunAmmo() + " SniperAmmo: " + ammunitionBag.getSniperAmmo();
     }
 
     @Override

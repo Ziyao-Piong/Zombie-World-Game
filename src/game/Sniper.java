@@ -8,5 +8,6 @@ public class Sniper extends Gun {
      */
     public Sniper() {
         super("Sniper", 'S', 50, "snipes", sniperAmmo);
+        addCapability(GunCapability.SNIPER);
     }
 }

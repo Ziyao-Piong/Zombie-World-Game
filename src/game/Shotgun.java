@@ -1,6 +1,7 @@
 package game;
 
 public class Shotgun extends Gun {
+	
     private static ShotgunAmmo shotgunAmmo;
 
     /**
@@ -8,11 +9,7 @@ public class Shotgun extends Gun {
      */
     public Shotgun() {
         super("Shotgun", 's', 40, "blasts", shotgunAmmo);
+        addCapability(GunCapability.SHOTGUN);
     }
 
-
-//    @Override
-//    public boolean trigger() {
-//        return shotgunAmmo.getAmmoCount() > 0;
-//    }
 }
