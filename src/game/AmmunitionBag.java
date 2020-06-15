@@ -63,6 +63,10 @@ public class AmmunitionBag extends ImmovableItem {
         return sniperAmmo;
     }
     
+    /**
+     * Check if there's any shotgun ammo left
+     * @return true if there's shotgun ammo left
+     */
     public boolean hasShotgunAmmo() {
     	if (shotgunAmmo > 0) {
     		return true;
@@ -70,6 +74,10 @@ public class AmmunitionBag extends ImmovableItem {
     	return false;
     }
     
+    /**
+     * Check if there's any sniper ammo left
+     * @return	true if there's sniper ammo left 
+     */
     public boolean hasSniperAmmo() {
     	if (sniperAmmo > 0) {
     		return true;
