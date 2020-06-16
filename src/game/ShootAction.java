@@ -80,6 +80,11 @@ public class ShootAction extends Action {
 		}
 	}
 	
+	/**
+	 * If the gun is a shotgun, it will print out a submenu for the player to choose
+	 * a direction to fire, then it will cause an area damage of 9 locations square 
+	 * in the direction of the player's chosen to fire.
+	 */
 	public String execute(Actor actor, GameMap map) {
 		Location direction = displayMenu(actor, map).getDestination();
 		Location actorLocation = map.locationOf(actor);
