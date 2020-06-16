@@ -225,6 +225,7 @@ public class GameSettings {
 			zombie.addItemToInventory(keyList.get(i));
 			zombies.remove(zombie);
 		}
+		zombieList.get(3).addItemToInventory(keyList.get(0));
 	}
 	
 	/**
@@ -243,7 +244,7 @@ public class GameSettings {
 		}
 		ImmovableItem shop = new ImmovableItem("Shop", '&', false);
 		shop.addAction(new VisitShopAction(pouch, bag, display));
-		compound.at(76, 2).addItem(shop);
+		compound.at(43, 20).addItem(shop);
 		town.at(38, 1).addItem(shop);
 	}
 	
@@ -288,9 +289,6 @@ public class GameSettings {
 		setUpKeys();
 		setUpWeapons();
 		setUpMerchant();
-		Gun shotgun = new Shotgun();
-		shotgun.addAction(new ShootAction(bag, shotgun, display));
-		player.addItemToInventory(shotgun);
 		return newWorld;
 	}
 }

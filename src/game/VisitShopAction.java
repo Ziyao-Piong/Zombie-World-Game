@@ -48,7 +48,7 @@ public class VisitShopAction extends Action {
 		Ammo shotgunAmmo = new ShotgunAmmo(bag);
 		catalogue.put(shotgunAmmo, 10);
 		
-		Ammo sniperAmmo = new ShotgunAmmo(bag);
+		Ammo sniperAmmo = new SniperAmmo(bag);
 		catalogue.put(sniperAmmo, 10);
 	}
 	
